@@ -229,43 +229,6 @@ void GLProgram::unsetTexture3D(GLuint unit) const {
   GL(glBindTexture(GL_TEXTURE_3D, 0));
 }
 
-void GLProgram::checkAndThrow() {
-	GLenum e = glGetError();
-	if (e != GL_NO_ERROR) {
-		std::stringstream s;
-		s << "An openGL error occured:" << errorString(e);
-		throw ProgramException{s.str()};
-	}	
-}
-
-void GLProgram::checkAndThrowShader(GLuint shader) {
-	GLint success[1] = { GL_TRUE };
-	glGetShaderiv(shader, GL_COMPILE_STATUS, success);
-	if(success[0] == GL_FALSE) {
-		GLint log_length{0};
-		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &log_length);
-		log_length = std::min(static_cast<GLint>(4096), log_length);
-		std::vector<GLchar> log(log_length);
-		glGetShaderInfoLog(shader, static_cast<GLsizei>(log.size()), NULL, log.data());
-		std::string str{log.data()};
-		throw ProgramException{str};
-	}
-}
-
-void GLProgram::checkAndThrowProgram(GLuint program) {
-	GLint linked{GL_TRUE};
-	glGetProgramiv(program, GL_LINK_STATUS, &linked);
-	if(linked != GL_TRUE) {
-		GLint log_length{0};
-		glGetProgramiv(program, GL_INFO_LOG_LENGTH, &log_length);
-		log_length = std::min(static_cast<GLint>(4096), log_length);
-		std::vector<GLchar> log(log_length);
-		glGetProgramInfoLog(program, static_cast<GLsizei>(log.size()), NULL, log.data());
-		std::string str{log.data()};
-		throw ProgramException{str};
-	}		
-}
-
 void GLProgram::programFromVectors(std::vector<std::string> vs, std::vector<std::string> fs, std::vector<std::string> gs) {
   vertexShaderStrings   = vs;
   fragmentShaderStrings = fs;
