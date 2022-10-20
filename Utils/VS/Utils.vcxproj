@@ -21,31 +21,20 @@
   <ItemGroup>
     <ClCompile Include="..\Image.cpp" />
     <ClCompile Include="..\AbstractParticleSystem.cpp" />
-    <ClCompile Include="..\ArcBall.cpp" />
     <ClCompile Include="..\bmp.cpp" />
     <ClCompile Include="..\FontRenderer.cpp" />
-    <ClCompile Include="..\FresnelVisualizer.cpp" />
     <ClCompile Include="..\GLApp.cpp" />
     <ClCompile Include="..\GLArray.cpp" />
     <ClCompile Include="..\GLBuffer.cpp" />
     <ClCompile Include="..\GLDebug.cpp" />
-    <ClCompile Include="..\GLDepthBuffer.cpp" />
     <ClCompile Include="..\GLEnv.cpp" />
-    <ClCompile Include="..\GLFramebuffer.cpp" />
     <ClCompile Include="..\GLProgram.cpp" />
     <ClCompile Include="..\GLTexture1D.cpp" />
     <ClCompile Include="..\GLTexture2D.cpp" />
     <ClCompile Include="..\GLTexture3D.cpp" />
     <ClCompile Include="..\Grid2D.cpp" />
-    <ClCompile Include="..\MD5.cpp" />
     <ClCompile Include="..\OBJFile.cpp" />
-    <ClCompile Include="..\ParticleSystem.cpp" />
-    <ClCompile Include="..\PlanarMirror.cpp" />
-    <ClCompile Include="..\PrecomputedParticleSystem.cpp" />
     <ClCompile Include="..\Rand.cpp" />
-    <ClCompile Include="..\SHA1.cpp" />
-    <ClCompile Include="..\SHA2.cpp" />
-    <ClCompile Include="..\Tesselation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\ColorConversion.h" />
