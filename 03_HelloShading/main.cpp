@@ -37,7 +37,7 @@ public:
   // camera
   bool cameraActive{false};
   bool firstCameraUpdate{true};
-  Vec3 viewPosition = { 0, 10, -100 }; // view translation position
+  Vec3 viewPosition = { 0, 0, -100 }; // view translation position
   Vec3 viewRotation = { -45, 0, 0 }; // view rotation angles
   Vec2 mouse = { 0, 0 }; // last mouse position
   float mouseSensitivity{0.15f}; // system specific factor
