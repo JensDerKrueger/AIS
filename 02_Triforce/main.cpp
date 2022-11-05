@@ -72,8 +72,7 @@ public:
     GL(glUseProgram(0));
     glViewport(0, 0, width, height);
   }
-  
-  
+
   std::string loadFile(const std::string& filename) {
     std::ifstream shaderFile{ filename };
     if (!shaderFile)
