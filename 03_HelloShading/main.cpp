@@ -46,34 +46,27 @@ public:
   MyGLApp() : GLApp(800,600,1,"Assignment 03 - Hello Shading") {}
 
   virtual void init() override {
-    const GLubyte* glVersion = glGetString(GL_VERSION);
-    const GLubyte* slVersion = glGetString(GL_SHADING_LANGUAGE_VERSION);
-    std::cout << glVersion << std::endl;
-    std::cout << slVersion << std::endl;
-
     time = glfwGetTime();
     setupShaders();
     setupGeometry();
+    GL(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
   }
 
   void selectShading() {
     switch (shading) {
       case Shading::FLAT:
         GL(glUseProgram(pFlat));
-        kd[0] = 0.8f;
-        kd[1] = kd[2] = 0;
+        kd = { 0.8f, 0.0f, 0.0f };
         GL(glUniform3fv(kdUniform, 1, kd));
         break;
       case Shading::GOURAUD:
         GL(glUseProgram(pGouraud));
-        kd[1] = 0.8f;
-        kd[0] = kd[2] = 0;
+        kd = { 0.0f, 0.8f, 0.0f };
         GL(glUniform3fv(kdUniform, 1, kd));
         break;
       case Shading::PHONG:
         GL(glUseProgram(pPhong));
-        kd[2] = 0.8f;
-        kd[0] = kd[1] = 0;
+        kd = { 0.0f, 0.0f, 0.8f };
         GL(glUniform3fv(kdUniform, 1, kd));
         break;
     }
@@ -84,7 +77,6 @@ public:
     double d = t - time;
     time = t;
 
-    GL(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
     GL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
 
     selectShading();
@@ -111,23 +103,18 @@ public:
 
   virtual void resize(int width, int height) override {
     float ratio = static_cast<float>(width) / static_cast<float>(height);
-    std::cout << "reshaping window, offset: (0 0) resolution: " << width << "x"
-    << height << " ratio: " << ratio << std::endl;
-
     projectionMatrix = Mat4::perspective(60.0f, ratio, 0.1f, 10000.0f);
-    glViewport(0, 0, width, height);
+    GL(glViewport(0, 0, width, height));
   }
 
   std::string loadFile(const std::string& filename) {
     std::ifstream shaderFile{ filename };
-    if (!shaderFile)
-    {
+    if (!shaderFile) {
       throw GLException{ std::string("Unable to open file ") + filename };
     }
     std::string str;
     std::string fileContents;
-    while (std::getline(shaderFile, str))
-    {
+    while (std::getline(shaderFile, str)) {
       fileContents += str + "\n";
     }
     return fileContents;
@@ -136,7 +123,7 @@ public:
   GLuint createShaderFromFile(GLenum type, const std::string& sourcePath) {
     const std::string shaderCode = loadFile(sourcePath);
     const GLchar* c_shaderCode = shaderCode.c_str();
-    GLuint s = glCreateShader(type);
+    const GLuint s = glCreateShader(type);
     GL(glShaderSource(s, 1, &c_shaderCode, NULL));
     glCompileShader(s); checkAndThrowShader(s);
     return s;
@@ -188,8 +175,8 @@ public:
   }
 
   void setupGeometry() {
-    GLint vertexPositionLocation = glGetAttribLocation(pPhong, "vertexPosition");
-    GLint vertexNormalLocation = glGetAttribLocation(pPhong, "vertexNormal");
+    const GLint vertexPositionLocation = glGetAttribLocation(pPhong, "vertexPosition");
+    const GLint vertexNormalLocation = glGetAttribLocation(pPhong, "vertexNormal");
 
     GL(glGenVertexArrays(2, vaos));
     GL(glGenBuffers(4, vbos));
@@ -278,7 +265,6 @@ public:
       }
       mouse[0] = float(xPosition);
       mouse[1] = float(yPosition);
-
     }
   }
 
@@ -292,8 +278,7 @@ public:
       mouse[1] = static_cast<float>(yPosition);
       cameraActive = true;
       firstCameraUpdate = true;
-    }
-    else if ((button == GLFW_MOUSE_BUTTON_LEFT ||
+    } else if ((button == GLFW_MOUSE_BUTTON_LEFT ||
               button == GLFW_MOUSE_BUTTON_RIGHT) && action == GLFW_RELEASE) {
       cameraActive = false;
       firstCameraUpdate = false;
