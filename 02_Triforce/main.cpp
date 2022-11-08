@@ -2,12 +2,7 @@
 
 #include <GLApp.h>
 
-#ifdef __APPLE__
-#include <mach-o/dyld.h>
-#endif // __APPLE__
-
-class MyGLApp : public GLApp
-{
+class MyGLApp : public GLApp {
 public:
   double time{};
   
@@ -99,16 +94,8 @@ public:
   
   void setupShaders()
   {
-    std::string pathToExe = "";
-#ifdef __APPLE__
-    char path[1024];
-    uint32_t size = sizeof(path);
-    _NSGetExecutablePath(path, &size);
-    pathToExe = std::string(path);
-    while (pathToExe.size() > 0 && pathToExe.back() != '/') pathToExe.pop_back();
-#endif
-    std::string vertexSrcPath = pathToExe + "res/shaders/vertexShader.vert";
-    std::string fragmentSrcPath = pathToExe + "res/shaders/fragmentShader.frag";
+    std::string vertexSrcPath = "res/shaders/vertexShader.vert";
+    std::string fragmentSrcPath = "res/shaders/fragmentShader.frag";
     GLuint vertexShader = createShaderFromFile(GL_VERTEX_SHADER, vertexSrcPath);
     GLuint fragmentShader = createShaderFromFile(GL_FRAGMENT_SHADER, fragmentSrcPath);
     
