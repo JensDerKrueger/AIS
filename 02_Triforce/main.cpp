@@ -4,15 +4,14 @@
 
 class MyGLApp : public GLApp {
 public:
-  double time{};
-  
-  Mat4 modelView = Mat4();
-  Mat4 projection = Mat4();
-  GLuint program{};
-  GLint modelViewMatrixUniform = -1;
-  GLint projectionMatrixUniform = -1;
-  GLuint vbos[1]{ };
-  GLuint vaos[1]{ };
+  double time{0.0};
+  Mat4 modelView{};
+  Mat4 projection{};
+  GLuint program{0};
+  GLint modelViewMatrixUniform{-1};
+  GLint projectionMatrixUniform{-1};
+  GLuint vbos{0};
+  GLuint vaos{0};
   
   const GLfloat vertexPositions[9] = {
     1.5f, 2.0f, 0.0f,
@@ -49,7 +48,7 @@ public:
     modelView = Mat4::translation(0.0f, -1.0f, 0.0f);
     GL(glUniformMatrix4fv(modelViewMatrixUniform, 1, GL_TRUE, modelView));
     
-    GL(glBindVertexArray(vaos[0]));
+    GL(glBindVertexArray(vaos));
     GL(glDrawArrays(GL_TRIANGLES, 0, sizeof(vertexPositions) / sizeof(vertexPositions[0]) / 3));
     GL(glBindVertexArray(0));
     GL(glUseProgram(0));
@@ -115,11 +114,11 @@ public:
   {
     GLint vertexPos = glGetAttribLocation(program, "vertexPosition");
     
-    GL(glGenVertexArrays(1, vaos));
-    GL(glBindVertexArray(vaos[0]));
+    GL(glGenVertexArrays(1, &vaos));
+    GL(glBindVertexArray(vaos));
     
-    GL(glGenBuffers(1, vbos));
-    GL(glBindBuffer(GL_ARRAY_BUFFER, vbos[0]));
+    GL(glGenBuffers(1, &vbos));
+    GL(glBindBuffer(GL_ARRAY_BUFFER, vbos));
     GL(glBufferData(GL_ARRAY_BUFFER, sizeof(vertexPositions), vertexPositions, GL_STATIC_DRAW));
     
     GL(glEnableVertexAttribArray(vertexPos));
