@@ -14,34 +14,27 @@ public:
   GLuint vaos{0};
   
   const GLfloat vertexPositions[9] = {
-    1.5f, 2.0f, 0.0f,
+     1.5f, 2.0f, 0.0f,
     -1.5f, 0.0f, 0.0f,
-    1.5f, 0.0f, 0.0f
+     1.5f, 0.0f, 0.0f
   };
   
   MyGLApp()
     : GLApp(800,600,4,"Assignment 02 - Triforce")
   {}
   
-  virtual void init() override
-  {
-    const GLubyte* glVersion = glGetString(GL_VERSION);
-    const GLubyte* slVersion = glGetString(GL_SHADING_LANGUAGE_VERSION);
-    std::cout << glVersion << std::endl;
-    std::cout << slVersion << std::endl;
-    
+  virtual void init() override {
     time = glfwGetTime();
     setupShaders();
     setupGeometry();
+    GL(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
   }
   
-  virtual void draw() override
-  {
+  virtual void draw() override {
     double t = glfwGetTime();
     double d = t - time;
     time = t;
     
-    GL(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
     GL(glClear(GL_COLOR_BUFFER_BIT));
     
     GL(glUseProgram(program));
@@ -54,12 +47,9 @@ public:
     GL(glUseProgram(0));
   }
   
-  virtual void resize(int width, int height) override
-  {
+  virtual void resize(int width, int height) override {
     float ratio = static_cast<float>(width) / static_cast<float>(height);
-    std::cout << "reshaping window, offset: (0 0) resolution: " << width << "x"
-    << height << " ratio: " << ratio << std::endl;
-    
+
     projection = Mat4::ortho(-ratio * 1.5f, ratio * 1.5f, -1.5f, 1.5f, -10.0f, 10.0f);
     GL(glUseProgram(program));
     GL(glUniformMatrix4fv(projectionMatrixUniform, 1, GL_TRUE, projection));
@@ -75,8 +65,7 @@ public:
     }
     std::string str;
     std::string fileContents;
-    while (std::getline(shaderFile, str))
-    {
+    while (std::getline(shaderFile, str)) {
       fileContents += str + "\n";
     }
     return fileContents;
@@ -85,41 +74,41 @@ public:
   GLuint createShaderFromFile(GLenum type, const std::string& sourcePath) {
     const std::string shaderCode = loadFile(sourcePath);
     const GLchar* c_shaderCode = shaderCode.c_str();
-    GLuint s = glCreateShader(type);
+    const GLuint s = glCreateShader(type);
     GL(glShaderSource(s, 1, &c_shaderCode, NULL));
     glCompileShader(s); checkAndThrowShader(s);
     return s;
   }
   
-  void setupShaders()
-  {
-    std::string vertexSrcPath = "res/shaders/vertexShader.vert";
-    std::string fragmentSrcPath = "res/shaders/fragmentShader.frag";
+  void setupShaders() {
+    const std::string vertexSrcPath = "res/shaders/vertexShader.vert";
+    const std::string fragmentSrcPath = "res/shaders/fragmentShader.frag";
     GLuint vertexShader = createShaderFromFile(GL_VERTEX_SHADER, vertexSrcPath);
     GLuint fragmentShader = createShaderFromFile(GL_FRAGMENT_SHADER, fragmentSrcPath);
     
     program = glCreateProgram();
     GL(glAttachShader(program, vertexShader));
     GL(glAttachShader(program, fragmentShader));
-    glLinkProgram(program);
+    GL(glLinkProgram(program));
     checkAndThrowProgram(program);
     
-    glUseProgram(program);
+    GL(glUseProgram(program));
     modelViewMatrixUniform = glGetUniformLocation(program, "modelViewMatrix");
     projectionMatrixUniform = glGetUniformLocation(program, "projectionMatrix");
     GL(glUseProgram(0));
   }
   
-  void setupGeometry()
-  {
-    GLint vertexPos = glGetAttribLocation(program, "vertexPosition");
+  void setupGeometry() {
+    GL(glUseProgram(program));
+    const GLint vertexPos = glGetAttribLocation(program, "vertexPosition");
     
     GL(glGenVertexArrays(1, &vaos));
     GL(glBindVertexArray(vaos));
     
     GL(glGenBuffers(1, &vbos));
     GL(glBindBuffer(GL_ARRAY_BUFFER, vbos));
-    GL(glBufferData(GL_ARRAY_BUFFER, sizeof(vertexPositions), vertexPositions, GL_STATIC_DRAW));
+    GL(glBufferData(GL_ARRAY_BUFFER, sizeof(vertexPositions), vertexPositions,
+                    GL_STATIC_DRAW));
     
     GL(glEnableVertexAttribArray(vertexPos));
     GL(glVertexAttribPointer(vertexPos, 3, GL_FLOAT, GL_FALSE, 0, (void*)0));
@@ -129,12 +118,10 @@ public:
   
   virtual void keyboard(int key, int scancode, int action, int mods) override
   {
-    
   }
 };
 
-int main(int argc, char** argv)
-{
+int main(int argc, char** argv) {
   MyGLApp myApp;
   myApp.run();
   return EXIT_SUCCESS;
