@@ -99,7 +99,6 @@ public:
   }
   
   void setupGeometry() {
-    GL(glUseProgram(program));
     const GLint vertexPos = glGetAttribLocation(program, "vertexPosition");
     
     GL(glGenVertexArrays(1, &vaos));
