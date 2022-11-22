@@ -168,7 +168,7 @@ public:
           setAnimation(!getAnimation());
           break;
         case GLFW_KEY_R:
-          light.angle = 0;
+          resetAnimation();
           viewPosition = Vec3{ 0, 0, -100 };
           viewRotation = Vec3{ -45, 0, 0 };
           break;
