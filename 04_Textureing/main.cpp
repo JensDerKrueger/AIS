@@ -62,8 +62,7 @@ public:
   virtual void init() override {
     setupTextures();
     setupGeometry();
-    GL(glEnable(GL_CULL_FACE));
-    GL(glCullFace(GL_BACK));
+    GL(glDisable(GL_CULL_FACE));
     GL(glEnable(GL_DEPTH_TEST));
     GL(glDepthFunc(GL_LESS));
     GL(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
@@ -102,7 +101,7 @@ public:
     Mat4 modelViewProjection = projectionMatrix * modelView;
 
     pSimpleTex.setUniform("MVP", modelViewProjection);
-    pSimpleTex.setTexture("td", stonesDiffuse);
+    pSimpleTex.setTexture("td", stonesDiffuse, 0);
     planeArray.bind();
     GL(glDrawArrays(GL_TRIANGLES, 0, sizeof(UnitPlane::vertices) / sizeof(UnitPlane::vertices[0])));
 
