@@ -14,5 +14,5 @@ namespace ImageLoader {
       std::string whatStr;
   };
 
-  Image load(const std::string& filename);
+  Image load(const std::string& filename, bool flipY=true);
 }

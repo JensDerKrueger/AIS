@@ -5,8 +5,8 @@
 #include "ImageLoader.h"
 
 namespace ImageLoader {
-  Image load(const std::string& filename) {
-    stbi_set_flip_vertically_on_load(false);
+  Image load(const std::string& filename, bool flipY) {
+    stbi_set_flip_vertically_on_load(flipY);
     int width, height, nrComponents;
     stbi_uc* image_data = stbi_load(filename.c_str(), &width, &height, &nrComponents, 0);
     if (image_data) {
