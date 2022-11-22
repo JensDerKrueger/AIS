@@ -43,6 +43,11 @@ public:
   bool getAnimation() const {
     return animationActive;
   }
+  void resetAnimation() {
+    resumeTime = 0;
+    glfwSetTime(0);
+    animate(0);
+  }
 
   float getAspect() const {
     const Dimensions d = glEnv.getWindowSize();
