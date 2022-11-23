@@ -24,7 +24,7 @@
     <ProjectGuid>{ad3f3a19-cf04-4859-bf3f-f862bb344b5b}</ProjectGuid>
     <RootNamespace>Mesh</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Hello_Triangles</ProjectName>
+    <ProjectName>HelloShading</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

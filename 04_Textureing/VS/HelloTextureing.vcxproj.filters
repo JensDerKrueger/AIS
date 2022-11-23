@@ -20,8 +20,24 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\res\shaders\fragmentShader.frag" />
-    <None Include="..\res\shaders\vertexShader.vert" />
+    <None Include="..\res\simpleTex.frag">
+      <Filter>Ressourcendateien</Filter>
+    </None>
+    <None Include="..\res\simpleTex.vert">
+      <Filter>Ressourcendateien</Filter>
+    </None>
+    <None Include="..\res\light.frag">
+      <Filter>Ressourcendateien</Filter>
+    </None>
+    <None Include="..\res\light.vert">
+      <Filter>Ressourcendateien</Filter>
+    </None>
+    <None Include="..\res\phong.frag">
+      <Filter>Ressourcendateien</Filter>
+    </None>
+    <None Include="..\res\phong.vert">
+      <Filter>Ressourcendateien</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Teapot.h">
@@ -33,5 +49,19 @@
     <ClInclude Include="..\UnitPlane.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\res\Stones_Diffuse.png">
+      <Filter>Ressourcendateien</Filter>
+    </Image>
+    <Image Include="..\res\Stones_Normals.png">
+      <Filter>Ressourcendateien</Filter>
+    </Image>
+    <Image Include="..\res\Stones_Specular.png">
+      <Filter>Ressourcendateien</Filter>
+    </Image>
+    <Image Include="..\res\HPC_Normals.png">
+      <Filter>Ressourcendateien</Filter>
+    </Image>
   </ItemGroup>
 </Project>
