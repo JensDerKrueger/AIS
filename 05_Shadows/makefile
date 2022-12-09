@@ -15,7 +15,7 @@ endif
 
 SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
-TARGET = hello_textureing
+TARGET = hello_shadows
 
 all: $(TARGET)
 

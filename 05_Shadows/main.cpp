@@ -61,7 +61,7 @@ public:
   float mousewheelFactor{10.0f}; // system specific factor
 
   MyGLApp() :
-    GLApp(800,600,1,"Assignment 05 - Hello Shdows"),
+    GLApp(800,600,1,"Assignment 05 - Hello Shadows"),
     pPhongBump{GLProgram::createFromFile("res/phongBump.vert","res/phongBump.frag")},
     pPhongBumpTex{GLProgram::createFromFile("res/phongBump.vert","res/phongBumpTex.frag")},
     pLight{GLProgram::createFromFile("res/light.vert","res/light.frag")}
