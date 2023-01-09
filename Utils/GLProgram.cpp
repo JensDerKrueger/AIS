@@ -214,6 +214,12 @@ void GLProgram::setTexture(GLint id, const GLTexture3D& texture, GLuint unit) co
   GL(glUniform1i(id, unit));
 }
 
+void GLProgram::setTexture(GLint id, const GLTextureCube& texture, GLuint unit) const {
+  GL(glActiveTexture(GL_TEXTURE0 + unit));
+  GL(glBindTexture(GL_TEXTURE_CUBE_MAP, texture.getId()));
+  GL(glUniform1i(id, unit));
+}
+
 void GLProgram::unsetTexture1D(GLuint unit) const {
   GL(glActiveTexture(GL_TEXTURE0 + unit));
   GL(glBindTexture(GL_TEXTURE_1D, 0));
@@ -303,3 +309,6 @@ void GLProgram::setTexture(const std::string& id, const GLTexture3D& texture, GL
   setTexture(getUniformLocation(id), texture, unit);
 }
 
+void GLProgram::setTexture(const std::string& id, const GLTextureCube& texture, GLuint unit) const {
+  setTexture(getUniformLocation(id), texture, unit);
+}

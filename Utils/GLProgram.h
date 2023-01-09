@@ -15,6 +15,7 @@
 #include "GLTexture1D.h"
 #include "GLTexture2D.h"
 #include "GLTexture3D.h"
+#include "GLTextureCube.h"
 
 class ProgramException : public std::exception {
 	public:
@@ -56,6 +57,7 @@ public:
   void setTexture(const std::string& id, const GLTexture1D& texture, GLuint unit=0) const;
   void setTexture(const std::string& id, const GLTexture2D& texture, GLuint unit=0) const;
   void setTexture(const std::string& id, const GLTexture3D& texture, GLuint unit=0) const;
+  void setTexture(const std::string& id, const GLTextureCube& texture, GLuint unit=0) const;
 
 	void setUniform(GLint id, float value) const;
   void setUniform(GLint id, const Vec2& value) const;
@@ -81,7 +83,8 @@ public:
   void setTexture(GLint id, const GLTexture1D& texture, GLuint unit=0) const;
   void setTexture(GLint id, const GLTexture2D& texture, GLuint unit=0) const;
 	void setTexture(GLint id, const GLTexture3D& texture, GLuint unit=0) const;
-	
+  void setTexture(GLint id, const GLTextureCube& texture, GLuint unit=0) const;
+
   void unsetTexture1D(GLuint unit) const;
   void unsetTexture2D(GLuint unit) const;
   void unsetTexture3D(GLuint unit) const;
