@@ -15,7 +15,7 @@ uniform mat4 worldToShadow;
 out vec3 posViewSpaceInterpolated;
 out vec3 normalViewSpaceInterpolated;
 out vec3 tangentViewSpaceInterpolated;
-out vec3 binormtViewSpaceInterpolated;
+out vec3 binormViewSpaceInterpolated;
 out vec2 texCoordsInterpolated;
 out vec4 shadowPos;
 
@@ -25,7 +25,7 @@ void main() {
 
   normalViewSpaceInterpolated = normalize((MVit * vec4(vertexNormal, 0)).xyz);
   tangentViewSpaceInterpolated = normalize((MVit * vec4(vertexTangent, 0)).xyz);;
-  binormtViewSpaceInterpolated = normalize((MVit * vec4(vertexBinormal, 0)).xyz);;
+  binormViewSpaceInterpolated = normalize((MVit * vec4(vertexBinormal, 0)).xyz);;
   texCoordsInterpolated = vertexTexCoords;
   shadowPos = worldToShadow * M * vec4(vertexPosition, 1);
 }

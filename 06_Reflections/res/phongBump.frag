@@ -3,7 +3,7 @@
 in vec3 posViewSpaceInterpolated;
 in vec3 normalViewSpaceInterpolated;
 in vec3 tangentViewSpaceInterpolated;
-in vec3 binormtViewSpaceInterpolated;
+in vec3 binormViewSpaceInterpolated;
 in vec2 texCoordsInterpolated;
 in vec4 shadowPos;
 
@@ -30,7 +30,7 @@ void main() {
 
   vec3 N = normalize(normalViewSpaceInterpolated);
   vec3 T = normalize(tangentViewSpaceInterpolated);
-  vec3 B = normalize(binormtViewSpaceInterpolated);
+  vec3 B = normalize(binormViewSpaceInterpolated);
 
   if(normalMap != vec3(0, 0, 0)) {
     normalMap = 2 * (normalMap - vec3(0.5)); // [0, 1] should map to [-1, 1]
