@@ -32,6 +32,7 @@
     <ClCompile Include="..\GLTexture1D.cpp" />
     <ClCompile Include="..\GLTexture2D.cpp" />
     <ClCompile Include="..\GLTexture3D.cpp" />
+    <ClCompile Include="..\GLTextureCube.cpp" />
     <ClCompile Include="..\Grid2D.cpp" />
     <ClCompile Include="..\ImageLoader.cpp" />
     <ClCompile Include="..\OBJFile.cpp" />
@@ -55,6 +56,7 @@
     <ClInclude Include="..\GLTexture1D.h" />
     <ClInclude Include="..\GLTexture2D.h" />
     <ClInclude Include="..\GLTexture3D.h" />
+    <ClInclude Include="..\GLTextureCube.h" />
     <ClInclude Include="..\Grid2D.h" />
     <ClInclude Include="..\Mat4.h" />
     <ClInclude Include="..\OBJFile.h" />

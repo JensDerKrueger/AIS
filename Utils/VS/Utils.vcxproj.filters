@@ -51,6 +51,9 @@
     <ClCompile Include="..\GLTexture3D.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="..\GLTextureCube.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
     <ClCompile Include="..\Grid2D.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -105,6 +108,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="..\GLTexture3D.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GLTextureCube.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="..\Grid2D.h">
