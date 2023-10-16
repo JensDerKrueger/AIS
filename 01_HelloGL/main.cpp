@@ -35,14 +35,14 @@ const char* fragmentShaderSource =
 "  fragColor = vec4(1.0f, 1.0f, 1.0f, 1.0);\n"
 "}\0";
 
-void init() {
+static void init() {
   const GLubyte* glVersion = glGetString(GL_VERSION);
   const GLubyte* slVersion = glGetString(GL_SHADING_LANGUAGE_VERSION);
   std::cout << glVersion << std::endl;
   std::cout << slVersion << std::endl;
 }
 
-void draw() {
+static void draw() {
   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
   GL( glClear(GL_COLOR_BUFFER_BIT) );
   
@@ -54,7 +54,7 @@ void draw() {
   glfwSwapBuffers(window);
 }
 
-void setupShaders() {
+static void setupShaders() {
   // create the vertex shader
   GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
   GL( glShaderSource(vertexShader, 1, &vertexShaderSource, NULL) );
@@ -78,7 +78,7 @@ void setupShaders() {
   GL( glDeleteShader(fragmentShader) );
 }
 
-void setupGeometry() {
+static void setupGeometry() {
   // define VAO for triangle
   GL( glGenVertexArrays(1, &vao) );
   GL( glBindVertexArray(vao) );
@@ -94,34 +94,32 @@ void setupGeometry() {
   GL( glBindVertexArray(0) );
 }
 
-void checkProgramLinkStatus(GLuint programId) {
+static void checkProgramLinkStatus(GLuint programId) {
   GLint success;
   glGetProgramiv(programId, GL_LINK_STATUS, &success);
-  if (!success)
-  {
+  if (!success) {
     char infoLog[512];
     glGetProgramInfoLog(programId, 512, NULL, infoLog);
     std::cout << "Error: Program link failed.\n" << infoLog << std::endl;
   }
 }
 
-void checkShaderCompileStatus(GLuint shaderId) {
+static void checkShaderCompileStatus(GLuint shaderId) {
   GLint success;
   glGetShaderiv(shaderId, GL_COMPILE_STATUS, &success);
-  if (!success)
-  {
+  if (!success) {
     char infoLog[512];
     glGetShaderInfoLog(shaderId, 512, NULL, infoLog);
     std::cout << "Error: Shader compilation failed.\n" << infoLog << std::endl;
   }
 }
 
-void processInput(GLFWwindow* window) {
+static void processInput(GLFWwindow* window) {
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
     glfwSetWindowShouldClose(window, true);
 }
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
+static void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
   int w, h;
   glfwGetFramebufferSize(window, &w, &h);
   GL( glViewport(0, 0, w, h) );
@@ -136,8 +134,7 @@ int main(int argc, char** argv) {
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	window = glfwCreateWindow(800, 600, "Assignment 01 - Hello OpenGL", NULL, NULL);
-	if (window == NULL)
-	{
+	if (window == NULL) {
 		std::cout << "Failed to create GLFW window!" << std::endl;
 		glfwTerminate();
 		return -1;
@@ -146,8 +143,7 @@ int main(int argc, char** argv) {
 	glfwMakeContextCurrent(window);
 
 	GLenum err(glewInit());
-	if (err != GLEW_OK)
-	{
+	if (err != GLEW_OK) {
 		std::stringstream s;
 		s << "Failed to init GLEW " << glewGetErrorString(err) << std::endl;
 		glfwTerminate();
@@ -165,17 +161,12 @@ int main(int argc, char** argv) {
 	setupGeometry();
 
 	// main loop
-	while (!glfwWindowShouldClose(window))
-	{
+	while (!glfwWindowShouldClose(window)) {
 		processInput(window);
-
 		draw();
-
 		glfwPollEvents();
 	}
-
 
 	glfwTerminate();
 	return EXIT_SUCCESS;
 }
-
