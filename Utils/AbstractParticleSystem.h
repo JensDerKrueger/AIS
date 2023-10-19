@@ -13,7 +13,9 @@ const Vec3 RAINBOW_COLOR{-2.0f,-2.0f,-2.0f};
 
 class AbstractParticleSystem {
 public:
-    AbstractParticleSystem(float pointSize, float refDepth=1.0f);
+  AbstractParticleSystem(float pointSize, float refDepth=1.0f);
+  virtual ~AbstractParticleSystem() {}
+  
 	virtual void update(float t) = 0;
 		
 	void setPointSize(float pointSize, float refDepth=1.0f) {

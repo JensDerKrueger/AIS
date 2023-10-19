@@ -111,7 +111,7 @@ GLTextureCube& GLTextureCube::operator=(const GLTextureCube& other) {
   return *this;
 }
 
-const GLint GLTextureCube::getId() const {
+const GLuint GLTextureCube::getId() const {
   return id;
 }
 
@@ -132,7 +132,7 @@ void GLTextureCube::setData(const std::vector<GLfloat>& data, Face face) {
   setData(data,width,height,face,componentCount);
 }
 
-void GLTextureCube::setEmpty(uint32_t width, uint32_t height, uint32_t componentCount, GLDataType dataType) {
+void GLTextureCube::setEmpty(uint32_t width, uint32_t height, uint8_t componentCount, GLDataType dataType) {
   for (size_t face = 0;face<6;++face) {
     switch (dataType) {
       case GLDataType::BYTE  : setData(std::vector<GLubyte>(width*height*componentCount), width, height, Face(face), componentCount); break;
@@ -142,7 +142,7 @@ void GLTextureCube::setEmpty(uint32_t width, uint32_t height, uint32_t component
   }
 }
 
-void GLTextureCube::setData(const std::vector<GLubyte>& data, uint32_t width, uint32_t height, Face face, uint32_t componentCount) {
+void GLTextureCube::setData(const std::vector<GLubyte>& data, uint32_t width, uint32_t height, Face face, uint8_t componentCount) {
   if (data.size() != componentCount*width*height) {
     throw GLException{"Data size and texure dimensions do not match."};
   }
@@ -151,7 +151,7 @@ void GLTextureCube::setData(const std::vector<GLubyte>& data, uint32_t width, ui
   setData((GLvoid*)data.data(), width, height, face, componentCount, GLDataType::BYTE);
 }
 
-void GLTextureCube::setData(const std::vector<GLhalf>& data, uint32_t width, uint32_t height, Face face, uint32_t componentCount) {
+void GLTextureCube::setData(const std::vector<GLhalf>& data, uint32_t width, uint32_t height, Face face, uint8_t componentCount) {
   if (data.size() != componentCount*width*height) {
     throw GLException{"Data size and texure dimensions do not match."};
   }
@@ -160,7 +160,7 @@ void GLTextureCube::setData(const std::vector<GLhalf>& data, uint32_t width, uin
   setData((GLvoid*)data.data(), width, height, face, componentCount, GLDataType::HALF);
 }
 
-void GLTextureCube::setData(const std::vector<GLfloat>& data, uint32_t width, uint32_t height, Face face, uint32_t componentCount) {
+void GLTextureCube::setData(const std::vector<GLfloat>& data, uint32_t width, uint32_t height, Face face, uint8_t componentCount) {
   if (data.size() != componentCount*width*height) {
     std::stringstream ss;
     ss << "Data size " << data.size() << " and texure dimensions " << componentCount << "*" << width
@@ -172,84 +172,89 @@ void GLTextureCube::setData(const std::vector<GLfloat>& data, uint32_t width, ui
   setData((GLvoid*)this->fdata.data(), width, height, face, componentCount, GLDataType::FLOAT);
 }
 
-static std::array<GLenum,3> dataTypeToGL(GLDataType dataType, uint32_t componentCount) {
+struct GLTexInfo {
+  GLint internalformat{0};
   GLenum type{0};
-  GLenum internalformat{0};
   GLenum format{0};
-  
+};
+
+static GLTexInfo dataTypeToGL(GLDataType dataType, uint8_t componentCount) {
+  GLTexInfo result;
+
   switch (dataType) {
     case GLDataType::BYTE :
-      type = GL_UNSIGNED_BYTE;
+      result.type = GL_UNSIGNED_BYTE;
       switch (componentCount) {
         case 1 :
-          internalformat = GL_R8;
-          format = GL_RED;
+          result.internalformat = GL_R8;
+          result.format = GL_RED;
           break;
         case 2 :
-          internalformat = GL_RG8;
-          format = GL_RG;
+          result.internalformat = GL_RG8;
+          result.format = GL_RG;
           break;
         case 3 :
-          internalformat = GL_RGB8;
-          format = GL_RGB;
+          result.internalformat = GL_RGB8;
+          result.format = GL_RGB;
           break;
         case 4 :
-          internalformat = GL_RGBA8;
-          format = GL_RGBA;
+          result.internalformat = GL_RGBA8;
+          result.format = GL_RGBA;
           break;
       }
       break;
 
     case GLDataType::HALF :
-      type = GL_HALF_FLOAT;
+      result.type = GL_HALF_FLOAT;
       switch (componentCount) {
         case 1 :
-          internalformat = GL_R16F;
-          format = GL_RED;
+          result.internalformat = GL_R16F;
+          result.format = GL_RED;
           break;
         case 2 :
-          internalformat = GL_RG16F;
-          format = GL_RG;
+          result.internalformat = GL_RG16F;
+          result.format = GL_RG;
           break;
         case 3 :
-          internalformat = GL_RGB16F;
-          format = GL_RGB;
+          result.internalformat = GL_RGB16F;
+          result.format = GL_RGB;
           break;
         case 4 :
-          internalformat = GL_RGBA16F;
-          format = GL_RGBA;
+          result.internalformat = GL_RGBA16F;
+          result.format = GL_RGBA;
           break;
       }
       break;
-      
+
     case GLDataType::FLOAT :
-      type = GL_FLOAT;
+      result.type = GL_FLOAT;
       switch (componentCount) {
         case 1 :
-          internalformat = GL_R32F;
-          format = GL_RED;
+          result.internalformat = GL_R32F;
+          result.format = GL_RED;
           break;
         case 2 :
-          internalformat = GL_RG32F;
-          format = GL_RG;
+          result.internalformat = GL_RG32F;
+          result.format = GL_RG;
           break;
         case 3 :
-          internalformat = GL_RGB32F;
-          format = GL_RGB;
+          result.internalformat = GL_RGB32F;
+          result.format = GL_RGB;
           break;
         case 4 :
-          internalformat = GL_RGBA32F;
-          format = GL_RGBA;
+          result.internalformat = GL_RGBA32F;
+          result.format = GL_RGBA;
           break;
       }
       break;
   }
 
-  return {type, internalformat, format};
+  return result;
 }
 
+
 void GLTextureCube::setData(GLvoid* data, uint32_t width, uint32_t height,
-                            Face face, uint32_t componentCount,
+                            Face face, uint8_t componentCount,
                             GLDataType dataType) {
   if (this->width != 0 || this->height != 0) {
     if (this->dataType != dataType ||
@@ -270,9 +275,11 @@ void GLTextureCube::setData(GLvoid* data, uint32_t width, uint32_t height,
   GL(glPixelStorei(GL_PACK_ALIGNMENT ,1));
   GL(glPixelStorei(GL_UNPACK_ALIGNMENT ,1));
 
-  std::array<GLenum,3> format = dataTypeToGL(dataType, componentCount);
+  const GLTexInfo texInfo = dataTypeToGL(dataType, componentCount);
 
-  GL(glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + int(face), 0, format[1], GLuint(width), GLuint(height), 0, format[2], format[0], data));
+  GL(glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + GLenum(face), 0,
+                  texInfo.internalformat, GLsizei(width), GLsizei(height), 0,
+                  texInfo.format, texInfo.type, data));
 }
 
 void GLTextureCube::generateMipmap() {

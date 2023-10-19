@@ -28,19 +28,19 @@ public:
   GLTextureCube(const GLTextureCube& other);
   GLTextureCube& operator=(const GLTextureCube& other);
     
-	const GLint getId() const;
+	const GLuint getId() const;
   void clear();
-  void setEmpty(uint32_t width, uint32_t height, uint32_t componentCount,
+  void setEmpty(uint32_t width, uint32_t height, uint8_t componentCount,
                 GLDataType dataType=GLDataType::BYTE);
   void setData(const Image& image, Face face);
   void setData(const std::vector<GLubyte>& data, uint32_t width,
-               uint32_t height, Face face, uint32_t componentCount=4);
+               uint32_t height, Face face, uint8_t componentCount=4);
   void setData(const std::vector<GLubyte>& data, Face face);
   void setData(const std::vector<GLfloat>& data, uint32_t width,
-               uint32_t height, Face face, uint32_t componentCount=4);
+               uint32_t height, Face face, uint8_t componentCount=4);
   void setData(const std::vector<GLfloat>& data, Face face);
   void setData(const std::vector<GLhalf>& data, uint32_t width,
-               uint32_t height, Face face, uint32_t componentCount=4);
+               uint32_t height, Face face, uint8_t componentCount=4);
   void setData(const std::vector<GLhalf>& data, Face face);
   void setFilter(GLint magFilter, GLint minFilter);
 
@@ -54,7 +54,7 @@ public:
 
 private:
 	GLuint id;
-	GLenum internalformat;
+	GLint internalformat;
 	GLenum format;
 	GLenum type;
 
@@ -68,9 +68,9 @@ private:
   std::vector<GLfloat> fdata;
   uint32_t width{0};
   uint32_t height{0};
-  uint32_t componentCount{0};
+  uint8_t componentCount{0};
   GLDataType dataType;
   
   void setData(GLvoid* data, uint32_t width, uint32_t height, Face face,
-               uint32_t componentCount, GLDataType dataType);
+               uint8_t componentCount, GLDataType dataType);
 };

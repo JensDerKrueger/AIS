@@ -212,7 +212,7 @@ bool GLFramebuffer::checkBinding() const {
     return glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE;
 }
 
-const GLint GLFramebuffer::getId() const {
+const GLuint GLFramebuffer::getId() const {
   return id;
 }
 
