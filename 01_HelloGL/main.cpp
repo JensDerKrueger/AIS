@@ -94,26 +94,6 @@ static void setupGeometry() {
   GL( glBindVertexArray(0) );
 }
 
-static void checkProgramLinkStatus(GLuint programId) {
-  GLint success;
-  glGetProgramiv(programId, GL_LINK_STATUS, &success);
-  if (!success) {
-    char infoLog[512];
-    glGetProgramInfoLog(programId, 512, NULL, infoLog);
-    std::cout << "Error: Program link failed.\n" << infoLog << std::endl;
-  }
-}
-
-static void checkShaderCompileStatus(GLuint shaderId) {
-  GLint success;
-  glGetShaderiv(shaderId, GL_COMPILE_STATUS, &success);
-  if (!success) {
-    char infoLog[512];
-    glGetShaderInfoLog(shaderId, 512, NULL, infoLog);
-    std::cout << "Error: Shader compilation failed.\n" << infoLog << std::endl;
-  }
-}
-
 static void processInput(GLFWwindow* window) {
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
     glfwSetWindowShouldClose(window, true);
