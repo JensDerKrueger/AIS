@@ -59,8 +59,7 @@ public:
 
   std::string loadFile(const std::string& filename) {
     std::ifstream shaderFile{ filename };
-    if (!shaderFile)
-    {
+    if (!shaderFile) {
       throw GLException{ std::string("Unable to open file ") + filename };
     }
     std::string str;
@@ -99,8 +98,8 @@ public:
   }
   
   void setupGeometry() {
-    const GLint vertexPos = glGetAttribLocation(program, "vertexPosition");
-    
+    const GLuint vertexPos = GLuint(glGetAttribLocation(program, "vertexPosition"));
+
     GL(glGenVertexArrays(1, &vaos));
     GL(glBindVertexArray(vaos));
     
