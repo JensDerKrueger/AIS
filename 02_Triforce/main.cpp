@@ -31,8 +31,8 @@ public:
   }
   
   virtual void draw() override {
-    double t = glfwGetTime();
-    double d = t - time;
+    const double t = glfwGetTime();
+    const double d = t - time;
     time = t;
     
     GL(glClear(GL_COLOR_BUFFER_BIT));
@@ -48,7 +48,7 @@ public:
   }
   
   virtual void resize(int width, int height) override {
-    float ratio = static_cast<float>(width) / static_cast<float>(height);
+    const float ratio = static_cast<float>(width) / static_cast<float>(height);
 
     projection = Mat4::ortho(-ratio * 1.5f, ratio * 1.5f, -1.5f, 1.5f, -10.0f, 10.0f);
     GL(glUseProgram(program));
@@ -82,8 +82,8 @@ public:
   void setupShaders() {
     const std::string vertexSrcPath = "res/shaders/vertexShader.vert";
     const std::string fragmentSrcPath = "res/shaders/fragmentShader.frag";
-    GLuint vertexShader = createShaderFromFile(GL_VERTEX_SHADER, vertexSrcPath);
-    GLuint fragmentShader = createShaderFromFile(GL_FRAGMENT_SHADER, fragmentSrcPath);
+    const GLuint vertexShader = createShaderFromFile(GL_VERTEX_SHADER, vertexSrcPath);
+    const GLuint fragmentShader = createShaderFromFile(GL_FRAGMENT_SHADER, fragmentSrcPath);
     
     program = glCreateProgram();
     GL(glAttachShader(program, vertexShader));
