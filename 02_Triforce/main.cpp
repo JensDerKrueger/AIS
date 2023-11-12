@@ -12,7 +12,9 @@ public:
   GLint projectionMatrixUniform{-1};
   GLuint vbos{0};
   GLuint vaos{0};
-  
+
+  constexpr static float sqrt3{ 1.7320508076f };
+
   const GLfloat vertexPositions[9] = {
      1.5f, 2.0f, 0.0f,
     -1.5f, 0.0f, 0.0f,
@@ -50,7 +52,12 @@ public:
   virtual void resize(int width, int height) override {
     const float ratio = static_cast<float>(width) / static_cast<float>(height);
 
-    projection = Mat4::ortho(-ratio * 1.5f, ratio * 1.5f, -1.5f, 1.5f, -10.0f, 10.0f);
+    if (ratio * sqrt3 >= 2)
+      projection = Mat4::ortho(-ratio * sqrt3, ratio * sqrt3, -sqrt3,
+                               sqrt3, -10.0f, 10.0f);
+    else
+      projection = Mat4::ortho(-2, 2, -2/ratio,
+                               2/ratio, -10.0f, 10.0f);
     GL(glUseProgram(program));
     GL(glUniformMatrix4fv(projectionMatrixUniform, 1, GL_TRUE, projection));
     GL(glUseProgram(0));
