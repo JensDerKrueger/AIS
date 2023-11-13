@@ -175,8 +175,8 @@ public:
   }
 
   void setupGeometry() {
-    const GLint vertexPositionLocation = glGetAttribLocation(pPhong, "vertexPosition");
-    const GLint vertexNormalLocation = glGetAttribLocation(pPhong, "vertexNormal");
+    const GLuint vertexPositionLocation = GLuint(glGetAttribLocation(pPhong, "vertexPosition"));
+    const GLuint vertexNormalLocation = GLuint(glGetAttribLocation(pPhong, "vertexNormal"));
 
     GL(glGenVertexArrays(2, vaos));
     GL(glGenBuffers(4, vbos));
