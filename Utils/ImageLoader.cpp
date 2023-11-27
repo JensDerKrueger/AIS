@@ -20,7 +20,7 @@ namespace ImageLoader {
       return image;
     } else {
       std::stringstream s;
-      s << "Can't loaf image file " << filename;
+      s << "Can't load image file " << filename;
       throw Exception(s.str());
     }
   }
