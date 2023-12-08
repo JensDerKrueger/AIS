@@ -70,7 +70,7 @@ public:
   }
 
   void setupTextures() {
-    Image image = ImageLoader::load("res/Stones_Diffuse.png");
+    const Image image = ImageLoader::load("res/Stones_Diffuse.png");
     stonesDiffuse.setData(image.data,image.width, image.height, image.componentCount);
   }
 
@@ -80,15 +80,16 @@ public:
 
   virtual void draw() override {
     GL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
-
-    Mat4 viewMatrix = Mat4::translation(viewPosition[0], viewPosition[1], viewPosition[2]);
-    viewMatrix = viewMatrix * Mat4::rotationX(viewRotation[0]);
-    viewMatrix = viewMatrix * Mat4::rotationY(viewRotation[1]);
-    viewMatrix = viewMatrix * Mat4::rotationZ(viewRotation[2]);
+    const Mat4 viewMatrix = 
+      Mat4::translation(viewPosition[0], viewPosition[1], viewPosition[2]) *
+      Mat4::rotationX(viewRotation[0]) *
+      Mat4::rotationY(viewRotation[1]) *
+      Mat4::rotationZ(viewRotation[2]);
 
     pLight.enable();
 
-    const Mat4 lightModelMatrix = Mat4::rotationY(-light.angle) *  Mat4::translation(-35, 35, 35);
+    const Mat4 lightModelMatrix = Mat4::rotationY(-light.angle) * 
+                                  Mat4::translation(-35, 35, 35);
     const Vec4 lightPosition =  viewMatrix * lightModelMatrix * Vec4(0, 0, 0, 1);
 
     pLight.setUniform("MVP", projectionMatrix * viewMatrix * lightModelMatrix);
@@ -120,7 +121,7 @@ public:
   }
 
   virtual void resize(int width, int height) override {
-    float ratio = static_cast<float>(width) / static_cast<float>(height);
+    const float ratio = static_cast<float>(width) / static_cast<float>(height);
     projectionMatrix = Mat4::perspective(60.0f, ratio, 0.1f, 10000.0f);
     GL(glViewport(0, 0, width, height));
   }
@@ -205,7 +206,8 @@ public:
     }
   }
 
-  virtual void mouseButton(int button, int action, int mods, double xPosition, double yPosition) override {
+  virtual void mouseButton(int button, int action, int mods, 
+                           double xPosition, double yPosition) override {
     if (button == GLFW_MOUSE_BUTTON_RIGHT) rightMouseDown = action == GLFW_PRESS;
     if (button == GLFW_MOUSE_BUTTON_LEFT) leftMouseDown = action == GLFW_PRESS;
 
