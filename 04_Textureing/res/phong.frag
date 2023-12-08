@@ -16,10 +16,8 @@ uniform vec3 ls = vec3(0.9f, 0.9f, 0.9f); // light specular color
 
 out vec4 color;
 
-void main()
-{
+void main() {
   vec3 normalViewSpace = normalize(normalViewSpaceInterpolated);
-
   vec3 lightVec = normalize(lightPosition.xyz - posViewSpace);
 
   // ambient color
@@ -29,14 +27,10 @@ void main()
   float d = max(0, dot(normalViewSpace, lightVec));
   vec3 diffuse = d * kd * ld;
 
-  float s = 0;
-  if(d > 0)
-  {
-    vec3 viewVec =  normalize(-posViewSpace); // camera is placed in origin in view space, view vector == -posViewSpace
-    vec3 reflected =  reflect(-lightVec, normalViewSpace); // reflect expects L pointing to surface
-    s = pow(max(0, dot(viewVec, reflected)), shininess);
-  }
-
+  // specular color
+  vec3 viewVec =  normalize(-posViewSpace);
+  vec3 reflected =  reflect(-lightVec, normalViewSpace);
+  float s = pow(max(0, dot(viewVec, reflected)), shininess);
   vec3 specular = s * ks * ls;
 
   color = vec4(ambient + diffuse + specular, 1);
