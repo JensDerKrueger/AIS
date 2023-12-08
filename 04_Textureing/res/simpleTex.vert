@@ -7,8 +7,7 @@ uniform mat4 MVP; // model-view-projection Matrix
 
 out vec2 tc;
 
-void main()
-{
+void main() {
   gl_Position = MVP * vec4(vertexPosition, 1);
   tc = texCoords;
 }
