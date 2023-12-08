@@ -137,7 +137,7 @@ public:
     planePosBuffer.setData(UnitPlane::vertices,
                         sizeof(UnitPlane::vertices)/sizeof(UnitPlane::vertices[0]),
                         3, GL_STATIC_DRAW);
-    planeArray.connectVertexAttrib(planePosBuffer, pPhong, "vertexPosition", 3);
+    planeArray.connectVertexAttrib(planePosBuffer, pSimpleTex, "vertexPosition", 3);
     planeTexCoordBuffer.setData(UnitPlane::texCoords,
                               sizeof(UnitPlane::texCoords)/sizeof(UnitPlane::texCoords[0]),
                               2, GL_STATIC_DRAW);
