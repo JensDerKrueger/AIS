@@ -22,7 +22,7 @@ public:
   GLTexture2D stonesDiffuse{GL_LINEAR, GL_LINEAR};
   GLTexture2D stonesSpecular{GL_LINEAR, GL_LINEAR};
   GLTexture2D stonesNormals{GL_LINEAR, GL_LINEAR};
-  GLTexture2D hpcNormals{GL_LINEAR, GL_LINEAR};
+  GLTexture2D udeNormals{GL_LINEAR, GL_LINEAR};
 
   GLProgram pPhongBump;
   GLProgram pPhongBumpTex;
@@ -87,8 +87,8 @@ public:
     image = ImageLoader::load("res/Stones_Normals.png");
     stonesNormals.setData(image.data,image.width, image.height, image.componentCount);
 
-    image = ImageLoader::load("res/HPC_Normals.png");
-    hpcNormals.setData(image.data,image.width, image.height, image.componentCount);
+    image = ImageLoader::load("res/UDE_Normals.png");
+    udeNormals.setData(image.data,image.width, image.height, image.componentCount);
   }
 
   virtual void animate(double animationTime) override {
@@ -138,7 +138,7 @@ public:
     pPhongBump.setUniform("MV", modelView);
     pPhongBump.setUniform("MVit", modelViewIT);
     pPhongBump.setUniform("lightPosition", lightPosition);
-    pPhongBump.setTexture("tn", hpcNormals,0);
+    pPhongBump.setTexture("tn", udeNormals,0);
 
     teapotArray.bind();
     GL(glDrawElements(GL_TRIANGLES, sizeof(Teapot::indices) / sizeof(Teapot::indices[0]), GL_UNSIGNED_INT, (void*)0));
