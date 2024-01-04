@@ -54,7 +54,7 @@ public:
   // camera
   bool cameraActive{false};
   bool firstCameraUpdate{true};
-  Vec3 viewPosition = { 0, 0, -100 }; // view translation position
+  Vec3 viewPosition = { 0, 0, 100 }; // view translation position
   Vec3 viewRotation = { -45, 0, 0 }; // view rotation angles
   Vec2 mouse = { 0, 0 }; // last mouse position
   float mouseSensitivity{0.15f}; // system specific factor
@@ -98,7 +98,7 @@ public:
   virtual void draw() override {
     GL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
 
-    Mat4 viewMatrix = Mat4::translation(viewPosition[0], viewPosition[1], viewPosition[2]);
+    Mat4 viewMatrix = Mat4::lookAt(viewPosition, {0,0,0}, {0,1,0});
     viewMatrix = viewMatrix * Mat4::rotationX(viewRotation[0]);
     viewMatrix = viewMatrix * Mat4::rotationY(viewRotation[1]);
     viewMatrix = viewMatrix * Mat4::rotationZ(viewRotation[2]);
@@ -215,7 +215,7 @@ public:
           break;
         case GLFW_KEY_R:
           resetAnimation();
-          viewPosition = Vec3{ 0, 0, -100 };
+          viewPosition = Vec3{ 0, 0, 100 };
           viewRotation = Vec3{ -45, 0, 0 };
           break;
       }
