@@ -75,6 +75,7 @@ public:
     GL(glDepthFunc(GL_LESS));
     GL(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
     setAnimation(false);
+    resetAnimation();
   }
 
   void setupTextures() {
