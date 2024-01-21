@@ -34,7 +34,7 @@ public:
   GLTexture2D stonesDiffuse{GL_LINEAR, GL_LINEAR};
   GLTexture2D stonesSpecular{GL_LINEAR, GL_LINEAR};
   GLTexture2D stonesNormals{GL_LINEAR, GL_LINEAR};
-  GLTexture2D hpcNormals{GL_LINEAR, GL_LINEAR};
+  GLTexture2D udeNormals{GL_LINEAR, GL_LINEAR};
 
   GLProgram pPhongBump;
   GLProgram pPhongBumpTex;
@@ -108,6 +108,7 @@ public:
     GL(glDepthFunc(GL_LESS));
     GL(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
     setAnimation(false);
+    resetAnimation();
   }
 
   void setupTextures() {
@@ -120,8 +121,8 @@ public:
     image = ImageLoader::load("res/Stones_Normals.png");
     stonesNormals.setData(image.data,image.width, image.height, image.componentCount);
 
-    image = ImageLoader::load("res/HPC_Normals.png");
-    hpcNormals.setData(image.data,image.width, image.height, image.componentCount);
+    image = ImageLoader::load("res/UDE_Normals.png");
+    udeNormals.setData(image.data,image.width, image.height, image.componentCount);
   }
 
   virtual void animate(double animationTime) override {
@@ -195,7 +196,7 @@ public:
       pPhongBumpTex.setUniform("worldToShadow", worldToShadowMatrix);
       pPhongBump.setUniform("MVit", modelViewIT);
       pPhongBump.setUniform("lightPosition", lightPosition);
-      pPhongBump.setTexture("tn", hpcNormals,0);
+      pPhongBump.setTexture("tn", udeNormals,0);
       pPhongBump.setTexture("shadowMap", shadowMap,1);
     } else {
       shadowProgram.setUniform("MVP", lightProjectionMatrix*lightViewMatrix*modelMatrix);

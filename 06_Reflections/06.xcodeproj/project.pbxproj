@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56206B392B5DC818004AABF3 /* UDE_Normals.png in Copy Files */ = {isa = PBXBuildFile; fileRef = 56206B382B5DC80C004AABF3 /* UDE_Normals.png */; };
 		5677395325FB7BF000AB2341 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5677394C25FB7BF000AB2341 /* main.cpp */; };
 		567AA3D3292D70DE00483F6E /* phongBump.frag in Copy Files */ = {isa = PBXBuildFile; fileRef = 567AA3D1292D70D200483F6E /* phongBump.frag */; };
 		567AA3D4292D70DE00483F6E /* phongBump.vert in Copy Files */ = {isa = PBXBuildFile; fileRef = 567AA3D2292D70D200483F6E /* phongBump.vert */; };
 		567AA3D7292D76BE00483F6E /* phongBumpTex.frag in Copy Files */ = {isa = PBXBuildFile; fileRef = 567AA3D5292D76B500483F6E /* phongBumpTex.frag */; };
-		56DC7589292C3D22002FC356 /* HPC_Normals.png in Copy Files */ = {isa = PBXBuildFile; fileRef = 56DC757D292C3D22002FC356 /* HPC_Normals.png */; };
 		56DC758D292C3D22002FC356 /* Stones_Diffuse.png in Copy Files */ = {isa = PBXBuildFile; fileRef = 56DC7581292C3D22002FC356 /* Stones_Diffuse.png */; };
 		56DC758E292C3D22002FC356 /* Stones_Specular.png in Copy Files */ = {isa = PBXBuildFile; fileRef = 56DC7582292C3D22002FC356 /* Stones_Specular.png */; };
 		56DC758F292C3D22002FC356 /* light.vert in Copy Files */ = {isa = PBXBuildFile; fileRef = 56DC7583292C3D22002FC356 /* light.vert */; };
@@ -26,10 +26,10 @@
 			dstPath = res;
 			dstSubfolderSpec = 6;
 			files = (
+				56206B392B5DC818004AABF3 /* UDE_Normals.png in Copy Files */,
 				567AA3D7292D76BE00483F6E /* phongBumpTex.frag in Copy Files */,
 				567AA3D3292D70DE00483F6E /* phongBump.frag in Copy Files */,
 				567AA3D4292D70DE00483F6E /* phongBump.vert in Copy Files */,
-				56DC7589292C3D22002FC356 /* HPC_Normals.png in Copy Files */,
 				56DC758D292C3D22002FC356 /* Stones_Diffuse.png in Copy Files */,
 				56DC758E292C3D22002FC356 /* Stones_Specular.png in Copy Files */,
 				56DC7592292C3D22002FC356 /* Stones_Normals.png in Copy Files */,
@@ -42,6 +42,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		56206B382B5DC80C004AABF3 /* UDE_Normals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UDE_Normals.png; path = res/UDE_Normals.png; sourceTree = "<group>"; };
 		5677394C25FB7BF000AB2341 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		567AA3D1292D70D200483F6E /* phongBump.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phongBump.frag; path = res/phongBump.frag; sourceTree = "<group>"; };
 		567AA3D2292D70D200483F6E /* phongBump.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phongBump.vert; path = res/phongBump.vert; sourceTree = "<group>"; };
@@ -49,7 +50,6 @@
 		56A338622915E74C00327B6C /* UnitCube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnitCube.h; sourceTree = "<group>"; };
 		56A338632915E74C00327B6C /* Teapot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Teapot.h; sourceTree = "<group>"; };
 		56A338642915E74C00327B6C /* UnitPlane.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnitPlane.h; sourceTree = "<group>"; };
-		56DC757D292C3D22002FC356 /* HPC_Normals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HPC_Normals.png; path = res/HPC_Normals.png; sourceTree = "<group>"; };
 		56DC7581292C3D22002FC356 /* Stones_Diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stones_Diffuse.png; path = res/Stones_Diffuse.png; sourceTree = "<group>"; };
 		56DC7582292C3D22002FC356 /* Stones_Specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stones_Specular.png; path = res/Stones_Specular.png; sourceTree = "<group>"; };
 		56DC7583292C3D22002FC356 /* light.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = light.vert; path = res/light.vert; sourceTree = "<group>"; };
@@ -76,9 +76,9 @@
 				56A338632915E74C00327B6C /* Teapot.h */,
 				56A338622915E74C00327B6C /* UnitCube.h */,
 				56A338642915E74C00327B6C /* UnitPlane.h */,
-				56DC757D292C3D22002FC356 /* HPC_Normals.png */,
 				56DC7581292C3D22002FC356 /* Stones_Diffuse.png */,
 				56DC7586292C3D22002FC356 /* Stones_Normals.png */,
+				56206B382B5DC80C004AABF3 /* UDE_Normals.png */,
 				56DC7582292C3D22002FC356 /* Stones_Specular.png */,
 				56DC7595292C4A86002FC356 /* light.frag */,
 				56DC7583292C3D22002FC356 /* light.vert */,
@@ -130,7 +130,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A231F0FA25EAF61A00CBFC23 /* Build configuration list for PBXProject "04" */;
+			buildConfigurationList = A231F0FA25EAF61A00CBFC23 /* Build configuration list for PBXProject "06" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -419,7 +419,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A231F0FA25EAF61A00CBFC23 /* Build configuration list for PBXProject "04" */ = {
+		A231F0FA25EAF61A00CBFC23 /* Build configuration list for PBXProject "06" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A231F10425EAF61A00CBFC23 /* Debug */,
