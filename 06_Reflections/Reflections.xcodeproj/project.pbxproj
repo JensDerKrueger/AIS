@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56016A9A2B6CDE3F00798781 /* phongBump.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56E7DFEA2B14D3C800418C0E /* phongBump.frag */; };
+		56016A9B2B6CDE3F00798781 /* phongBump.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56E7DFEB2B14D3C800418C0E /* phongBump.vert */; };
+		56016A9C2B6CDE3F00798781 /* phongBumpTex.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56E7DFEC2B14D3C800418C0E /* phongBumpTex.frag */; };
 		5662251B2B14D09F00D3C15F /* light.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566225002B14CF9700D3C15F /* light.frag */; };
 		5662251C2B14D09F00D3C15F /* light.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566224FD2B14CF9700D3C15F /* light.vert */; };
 		566225212B14D0BE00D3C15F /* Stones_Diffuse.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566225032B14CF9700D3C15F /* Stones_Diffuse.png */; };
@@ -63,9 +66,6 @@
 		56C3089A2ADFE5FC001E10D2 /* Vec2.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C3085F2ADFE562001E10D2 /* Vec2.h */; };
 		56C3089B2ADFE5FC001E10D2 /* Vec3.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C3085A2ADFE562001E10D2 /* Vec3.h */; };
 		56C3089C2ADFE5FC001E10D2 /* Vec4.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C3085B2ADFE562001E10D2 /* Vec4.h */; };
-		56E7DFF32B14D83C00418C0E /* phongBump.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56E7DFF22B14D83200418C0E /* phongBump.frag */; };
-		56E7DFF42B14D83C00418C0E /* phongBump.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56E7DFF02B14D83200418C0E /* phongBump.vert */; };
-		56E7DFF52B14D83C00418C0E /* phongBumpTex.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56E7DFF12B14D83200418C0E /* phongBumpTex.frag */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -99,9 +99,9 @@
 			dstPath = res;
 			dstSubfolderSpec = 16;
 			files = (
-				56E7DFF32B14D83C00418C0E /* phongBump.frag in CopyFiles */,
-				56E7DFF42B14D83C00418C0E /* phongBump.vert in CopyFiles */,
-				56E7DFF52B14D83C00418C0E /* phongBumpTex.frag in CopyFiles */,
+				56016A9A2B6CDE3F00798781 /* phongBump.frag in CopyFiles */,
+				56016A9B2B6CDE3F00798781 /* phongBump.vert in CopyFiles */,
+				56016A9C2B6CDE3F00798781 /* phongBumpTex.frag in CopyFiles */,
 				566225212B14D0BE00D3C15F /* Stones_Diffuse.png in CopyFiles */,
 				566225222B14D0BE00D3C15F /* Stones_Normals.png in CopyFiles */,
 				566225232B14D0BE00D3C15F /* Stones_Specular.png in CopyFiles */,
@@ -177,9 +177,6 @@
 		56E7DFEA2B14D3C800418C0E /* phongBump.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phongBump.frag; path = Solution/res/phongBump.frag; sourceTree = "<group>"; };
 		56E7DFEB2B14D3C800418C0E /* phongBump.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phongBump.vert; path = Solution/res/phongBump.vert; sourceTree = "<group>"; };
 		56E7DFEC2B14D3C800418C0E /* phongBumpTex.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phongBumpTex.frag; path = Solution/res/phongBumpTex.frag; sourceTree = "<group>"; };
-		56E7DFF02B14D83200418C0E /* phongBump.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phongBump.vert; path = res/phongBump.vert; sourceTree = "<group>"; };
-		56E7DFF12B14D83200418C0E /* phongBumpTex.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phongBumpTex.frag; path = res/phongBumpTex.frag; sourceTree = "<group>"; };
-		56E7DFF22B14D83200418C0E /* phongBump.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phongBump.frag; path = res/phongBump.frag; sourceTree = "<group>"; };
 		A231F0FF25EAF61A00CBFC23 /* Reflections */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Reflections; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -263,9 +260,6 @@
 				5677394C25FB7BF000AB2341 /* main.cpp */,
 				566225002B14CF9700D3C15F /* light.frag */,
 				566224FD2B14CF9700D3C15F /* light.vert */,
-				56E7DFF22B14D83200418C0E /* phongBump.frag */,
-				56E7DFF02B14D83200418C0E /* phongBump.vert */,
-				56E7DFF12B14D83200418C0E /* phongBumpTex.frag */,
 				56E7DFEA2B14D3C800418C0E /* phongBump.frag */,
 				56E7DFEB2B14D3C800418C0E /* phongBump.vert */,
 				56E7DFEC2B14D3C800418C0E /* phongBumpTex.frag */,
