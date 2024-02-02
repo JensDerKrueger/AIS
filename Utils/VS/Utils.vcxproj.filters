@@ -54,6 +54,12 @@
     <ClCompile Include="..\GLTextureCube.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="..\GLFramebuffer.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GLDepthBuffer.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
     <ClCompile Include="..\Grid2D.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -111,6 +117,12 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="..\GLTextureCube.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GLFramebuffer.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GLDepthBuffer.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="..\Grid2D.h">
