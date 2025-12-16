@@ -174,9 +174,6 @@
 		56C308612ADFE562001E10D2 /* Mat4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Mat4.h; path = ../Utils/Mat4.h; sourceTree = "<group>"; };
 		56C308622ADFE562001E10D2 /* GLTextureCube.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GLTextureCube.cpp; path = ../Utils/GLTextureCube.cpp; sourceTree = "<group>"; };
 		56C308672ADFE5EE001E10D2 /* libUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		56E7DFEA2B14D3C800418C0E /* phongBump.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phongBump.frag; path = Solution/res/phongBump.frag; sourceTree = "<group>"; };
-		56E7DFEB2B14D3C800418C0E /* phongBump.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phongBump.vert; path = Solution/res/phongBump.vert; sourceTree = "<group>"; };
-		56E7DFEC2B14D3C800418C0E /* phongBumpTex.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phongBumpTex.frag; path = Solution/res/phongBumpTex.frag; sourceTree = "<group>"; };
 		56E7DFF02B14D83200418C0E /* phongBump.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phongBump.vert; path = res/phongBump.vert; sourceTree = "<group>"; };
 		56E7DFF12B14D83200418C0E /* phongBumpTex.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phongBumpTex.frag; path = res/phongBumpTex.frag; sourceTree = "<group>"; };
 		56E7DFF22B14D83200418C0E /* phongBump.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phongBump.frag; path = res/phongBump.frag; sourceTree = "<group>"; };
@@ -266,9 +263,6 @@
 				56E7DFF22B14D83200418C0E /* phongBump.frag */,
 				56E7DFF02B14D83200418C0E /* phongBump.vert */,
 				56E7DFF12B14D83200418C0E /* phongBumpTex.frag */,
-				56E7DFEA2B14D3C800418C0E /* phongBump.frag */,
-				56E7DFEB2B14D3C800418C0E /* phongBump.vert */,
-				56E7DFEC2B14D3C800418C0E /* phongBumpTex.frag */,
 				566225042B14CFB900D3C15F /* Teapot.h */,
 				566225052B14CFB900D3C15F /* UnitCube.h */,
 				566225062B14CFB900D3C15F /* UnitPlane.h */,
