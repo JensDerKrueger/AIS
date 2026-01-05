@@ -158,7 +158,7 @@ public:
    * @param bSmallTable Select a shorter LUT (true) or a more detailed one (false).
    * @return Multiline string with ASCII shading.
    */
-  std::string toACIIArt(bool bSmallTable=true) const;
+  std::string toASCIIArt(bool bSmallTable=true) const;
 
   /**
    * @brief Convolve image with a small 2D filter kernel (no borders).
