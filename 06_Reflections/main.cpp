@@ -7,6 +7,7 @@
 #include "UnitPlane.h"
 #include "UnitCube.h"
 
+#ifndef __EMSCRIPTEN__
 static const std::string shadowVertexShader {R"(#version 410
 uniform mat4 MVP;
 layout (location = 0) in vec3 vPos;
@@ -17,6 +18,18 @@ void main() {
 static const std::string shadowFragmentShader {R"(#version 410
 void main() {
 })"};
+#else
+static const std::string shadowVertexShader {R"(#version 300 es
+uniform mat4 MVP;
+in vec3 vPos;
+void main() {
+    gl_Position = MVP * vec4(vPos, 1.0);
+})"};
+
+static const std::string shadowFragmentShader {R"(#version 300 es
+void main() {
+})"};
+#endif
 
 class LightProperties {
 public:
@@ -76,7 +89,7 @@ public:
   // camera
   bool cameraActive{false};
   bool firstCameraUpdate{true};
-  Vec3 viewPosition = { 0, 0, -100 }; // view translation position
+  Vec3 viewPosition = { 0, 0, 100 }; // view translation position
   Vec3 viewRotation = { -45, 0, 0 }; // view rotation angles
   Vec2 mouse = { 0, 0 }; // last mouse position
   float mouseSensitivity{0.15f}; // system specific factor
@@ -92,12 +105,18 @@ public:
 
   MyGLApp() :
     GLApp(800,600,1,"Assignment 06 - Hello Sky"),
+#ifndef __EMSCRIPTEN__
     pPhongBump{GLProgram::createFromFile("res/phongBump.vert","res/phongBump.frag")},
     pPhongBumpTex{GLProgram::createFromFile("res/phongBump.vert","res/phongBumpTex.frag")},
     pLight{GLProgram::createFromFile("res/light.vert","res/light.frag")},
+#else
+  pPhongBump{GLProgram::createFromFile("res/phongBump3.vert","res/phongBump3.frag")},
+  pPhongBumpTex{GLProgram::createFromFile("res/phongBump3.vert","res/phongBumpTex3.frag")},
+  pLight{GLProgram::createFromFile("res/light3.vert","res/light3.frag")},
+#endif
     shadowProgram{GLProgram::createFromString(shadowVertexShader,shadowFragmentShader)}
   {
-    shadowMap.setEmpty(1024,1024);
+    shadowMap.setEmpty(2048,2048);
   }
 
   virtual void init() override {
@@ -130,12 +149,13 @@ public:
   }
 
   void updateState() {
-    viewMatrix = Mat4::translation(viewPosition[0], viewPosition[1], viewPosition[2]);
+    viewMatrix = Mat4::lookAt(viewPosition, {0,0,0}, {0,1,0});
+
     viewMatrix = viewMatrix * Mat4::rotationX(viewRotation[0]);
     viewMatrix = viewMatrix * Mat4::rotationY(viewRotation[1]);
     viewMatrix = viewMatrix * Mat4::rotationZ(viewRotation[2]);
 
-    lightModelMatrix = Mat4::rotationY(-light.angle) *  Mat4::translation(-80, 60, 80);
+    lightModelMatrix = Mat4::rotationY(light.angle) *  Mat4::translation(-80, 60, 80);
     lightPosition =  viewMatrix * lightModelMatrix * Vec4(0, 0, 0, 1);
 
     lightProjectionMatrix = Mat4::perspective(60.0f,
@@ -180,7 +200,7 @@ public:
     }
 
     planeArray.bind();
-    GL(glDrawArrays(GL_TRIANGLES, 0, sizeof(UnitPlane::vertices) / sizeof(UnitPlane::vertices[0])));
+    GL(glDrawArrays(GL_TRIANGLES, 0, sizeof(UnitPlane::vertices) / (3*sizeof(UnitPlane::vertices[0]))));
 
     modelMatrix = {};
 
@@ -223,7 +243,7 @@ public:
   }
 
   virtual void resize(int width, int height) override {
-    float ratio = static_cast<float>(width) / static_cast<float>(height);
+    const float ratio = static_cast<float>(width) / static_cast<float>(height);
     projectionMatrix = Mat4::perspective(60.0f, ratio, 0.1f, 10000.0f);
     GL(glViewport(0, 0, width, height));
   }
@@ -281,19 +301,19 @@ public:
   }
 
   virtual void keyboard(int key, int scancode, int action, int mods) override {
-    if (key == GLFW_KEY_LEFT_CONTROL) controlDown = action == GLFW_PRESS;
+    if (key == GLENV_KEY_LEFT_CONTROL) controlDown = action == GLENV_PRESS;
 
-    if (action == GLFW_PRESS) {
+    if (action == GLENV_PRESS) {
       switch (key) {
-        case GLFW_KEY_ESCAPE:
+        case GLENV_KEY_ESCAPE:
           closeWindow();
           break;
-        case GLFW_KEY_SPACE:
+        case GLENV_KEY_SPACE:
           setAnimation(!getAnimation());
           break;
-        case GLFW_KEY_R:
+        case GLENV_KEY_R:
           resetAnimation();
-          viewPosition = Vec3{ 0, 0, -100 };
+          viewPosition = Vec3{ 0, 0, 100 };
           viewRotation = Vec3{ -45, 0, 0 };
           break;
       }
@@ -330,17 +350,17 @@ public:
   }
 
   virtual void mouseButton(int button, int action, int mods, double xPosition, double yPosition) override {
-    if (button == GLFW_MOUSE_BUTTON_RIGHT) rightMouseDown = action == GLFW_PRESS;
-    if (button == GLFW_MOUSE_BUTTON_LEFT) leftMouseDown = action == GLFW_PRESS;
+    if (button == GLENV_MOUSE_BUTTON_RIGHT) rightMouseDown = action == GLENV_MOUSE_PRESS;
+    if (button == GLENV_MOUSE_BUTTON_LEFT) leftMouseDown = action == GLENV_MOUSE_PRESS;
 
-    if ((button == GLFW_MOUSE_BUTTON_LEFT ||
-         button == GLFW_MOUSE_BUTTON_RIGHT) && action == GLFW_PRESS) {
+    if ((button == GLENV_MOUSE_BUTTON_LEFT ||
+         button == GLENV_MOUSE_BUTTON_RIGHT) && action == GLENV_MOUSE_PRESS) {
       mouse[0] = static_cast<float>(xPosition);
       mouse[1] = static_cast<float>(yPosition);
       cameraActive = true;
       firstCameraUpdate = true;
-    } else if ((button == GLFW_MOUSE_BUTTON_LEFT ||
-              button == GLFW_MOUSE_BUTTON_RIGHT) && action == GLFW_RELEASE) {
+    } else if ((button == GLENV_MOUSE_BUTTON_LEFT ||
+              button == GLENV_MOUSE_BUTTON_RIGHT) && action == GLENV_MOUSE_RELEASE) {
       cameraActive = false;
       firstCameraUpdate = false;
     }
