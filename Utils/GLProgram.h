@@ -14,9 +14,9 @@
 #include "GLTexture2D.h"
 #include "GLTexture3D.h"
 #include "GLDepthTexture.h"
+#include "GLTextureCube.h"
 #ifndef __EMSCRIPTEN__
 #include "GLTexture1D.h"
-#include "GLTextureCube.h"
 #endif
 
 /**
@@ -137,11 +137,11 @@ public:
   /** @name Texture setters (by name) */
   ///@{
   void setTexture(const std::string& id, const GLTexture1D& texture, GLenum unit=0) const;
-  void setTexture(const std::string& id, const GLTextureCube& texture, GLenum unit=0) const;
   ///@}
 #endif
   /** @name Texture setters (by name) */
   ///@{
+  void setTexture(const std::string& id, const GLTextureCube& texture, GLenum unit=0) const;
   void setTexture(const std::string& id, const GLDepthTexture& texture, GLenum unit=0) const;
   void setTexture(const std::string& id, const GLTexture2D& texture, GLenum unit=0) const;
   void setTexture(const std::string& id, const GLTexture3D& texture, GLenum unit=0) const;
@@ -177,11 +177,11 @@ public:
   /** @name Texture setters (by location) */
   ///@{
   void setTexture(GLint id, const GLTexture1D& texture, GLenum unit=0) const;
-  void setTexture(GLint id, const GLTextureCube& texture, GLenum unit=0) const;
   ///@}
 #endif
   /** @name Texture setters (by location) */
   ///@{
+  void setTexture(GLint id, const GLTextureCube& texture, GLenum unit=0) const;
   void setTexture(GLint id, const GLDepthTexture& texture, GLenum unit=0) const;
   void setTexture(GLint id, const GLTexture2D& texture, GLenum unit=0) const;
   void setTexture(GLint id, const GLTexture3D& texture, GLenum unit=0) const;
