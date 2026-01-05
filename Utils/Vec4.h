@@ -92,7 +92,7 @@ public:
    */
   template <typename U>
   explicit Vec4t(const Vec3t<U>& other, T w):
-  e{other.x, other.y, other.z}
+  e{other.x, other.y, other.z, w}
   {}
 
   /**
