@@ -7,29 +7,11 @@
 #include "UnitPlane.h"
 #include "UnitCube.h"
 
-#ifndef __EMSCRIPTEN__
-static const std::string shadowVertexShader {R"(#version 410
-uniform mat4 MVP;
-layout (location = 0) in vec3 vPos;
-void main() {
-    gl_Position = MVP * vec4(vPos, 1.0);
-})"};
-
-static const std::string shadowFragmentShader {R"(#version 410
-void main() {
-})"};
-#else
-static const std::string shadowVertexShader {R"(#version 300 es
-uniform mat4 MVP;
+static const std::string shadowVertexShader {R"(uniform mat4 MVP;
 in vec3 vPos;
-void main() {
-    gl_Position = MVP * vec4(vPos, 1.0);
-})"};
+void main() {gl_Position = MVP * vec4(vPos, 1.0);})"};
 
-static const std::string shadowFragmentShader {R"(#version 300 es
-void main() {
-})"};
-#endif
+static const std::string shadowFragmentShader {R"(void main() {})"};
 
 class LightProperties {
 public:
@@ -105,16 +87,10 @@ public:
 
   MyGLApp() :
     GLApp(800,600,1,"Assignment 06 - Hello Sky"),
-#ifndef __EMSCRIPTEN__
-    pPhongBump{GLProgram::createFromFile("res/phongBump.vert","res/phongBump.frag")},
-    pPhongBumpTex{GLProgram::createFromFile("res/phongBump.vert","res/phongBumpTex.frag")},
-    pLight{GLProgram::createFromFile("res/light.vert","res/light.frag")},
-#else
-  pPhongBump{GLProgram::createFromFile("res/phongBump3.vert","res/phongBump3.frag")},
-  pPhongBumpTex{GLProgram::createFromFile("res/phongBump3.vert","res/phongBumpTex3.frag")},
-  pLight{GLProgram::createFromFile("res/light3.vert","res/light3.frag")},
-#endif
-    shadowProgram{GLProgram::createFromString(shadowVertexShader,shadowFragmentShader)}
+    pPhongBump{GLProgram::createFromFile("res/phongBump.vert","res/phongBump.frag","",false,true)},
+    pPhongBumpTex{GLProgram::createFromFile("res/phongBump.vert","res/phongBumpTex.frag","",false,true)},
+    pLight{GLProgram::createFromFile("res/light.vert","res/light.frag","",false,true)},
+    shadowProgram{GLProgram::createFromString(shadowVertexShader,shadowFragmentShader,"",false,true)}
   {
     shadowMap.setEmpty(2048,2048);
   }
@@ -140,7 +116,7 @@ public:
     image = ImageLoader::load("res/Stones_Normals.png");
     stonesNormals.setData(image.data,image.width, image.height, image.componentCount);
 
-    image = ImageLoader::load("res/UDE_Normals.png");
+    image = ImageLoader::load("res/teapot_Normals.png");
     udeNormals.setData(image.data,image.width, image.height, image.componentCount);
   }
 
@@ -242,10 +218,9 @@ public:
     renderScene(true);
   }
 
-  virtual void resize(int width, int height) override {
-    const float ratio = static_cast<float>(width) / static_cast<float>(height);
-    projectionMatrix = Mat4::perspective(60.0f, ratio, 0.1f, 10000.0f);
-    GL(glViewport(0, 0, width, height));
+  virtual void resize(const Dimensions winDim, const Dimensions fbDim) override {
+    GLApp::resize(winDim, fbDim);
+    projectionMatrix = Mat4::perspective(60.0f, fbDim.aspect(), 0.1f, 10000.0f);
   }
 
   void setupGeometry() {

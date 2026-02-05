@@ -319,7 +319,7 @@ Image Image::crop(uint32_t blX, uint32_t blY, uint32_t trX, uint32_t trY) const 
 }
 
 
-Image Image::flipHorizontal() const {
+Image Image::flipVertical() const {
   Image result{width, height, componentCount};
   for (uint32_t y = 0;y<height;++y) {
     for (uint32_t x = 0;x<width;++x) {
@@ -331,7 +331,7 @@ Image Image::flipHorizontal() const {
   return result;
 }
 
-Image Image::flipVertical() const {
+Image Image::flipHorizontal() const {
   Image result{width, height, componentCount};
   for (uint32_t y = 0;y<height;++y) {
     for (uint32_t x = 0;x<width;++x) {

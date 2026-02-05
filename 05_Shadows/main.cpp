@@ -7,7 +7,7 @@
 
 
 class LightProperties {
-public:
+  public:
   GLint modelViewProjectionMatrixUniform{-1};
   float degreesPerSecond{45.0f};
   float angle{0};
@@ -15,7 +15,7 @@ public:
 
 
 class MyGLApp : public GLApp {
-public:
+  public:
   LightProperties light;
   Mat4 projectionMatrix;
 
@@ -61,10 +61,10 @@ public:
   float mousewheelFactor{10.0f}; // system specific factor
 
   MyGLApp() :
-    GLApp(800,600,1,"Assignment 05 - Hello Shadows"),
-    pPhongBump{GLProgram::createFromFile("res/phongBump.vert","res/phongBump.frag")},
-    pPhongBumpTex{GLProgram::createFromFile("res/phongBump.vert","res/phongBumpTex.frag")},
-    pLight{GLProgram::createFromFile("res/light.vert","res/light.frag")}
+  GLApp(800,600,1,"Assignment 05 - Hello Shadows"),
+  pPhongBump{GLProgram::createFromFile("res/phongBump.vert","res/phongBump.frag","",false,true)},
+  pPhongBumpTex{GLProgram::createFromFile("res/phongBump.vert","res/phongBumpTex.frag","",false,true)},
+  pLight{GLProgram::createFromFile("res/light.vert","res/light.frag","",false,true)}
   {}
 
   virtual void init() override {
@@ -73,7 +73,6 @@ public:
     GL(glDisable(GL_CULL_FACE)); // the teapot is not watertight
     GL(glEnable(GL_DEPTH_TEST));
     GL(glDepthFunc(GL_LESS));
-    GL(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
     setAnimation(false);
     resetAnimation();
   }
@@ -88,7 +87,7 @@ public:
     image = ImageLoader::load("res/Stones_Normals.png");
     stonesNormals.setData(image.data,image.width, image.height, image.componentCount);
 
-    image = ImageLoader::load("res/UDE_Normals.png");
+    image = ImageLoader::load("res/teapot_Normals.png");
     udeNormals.setData(image.data,image.width, image.height, image.componentCount);
   }
 
@@ -145,60 +144,59 @@ public:
     GL(glDrawElements(GL_TRIANGLES, sizeof(Teapot::indices) / sizeof(Teapot::indices[0]), GL_UNSIGNED_INT, (void*)0));
   }
 
-  virtual void resize(int width, int height) override {
-    float ratio = static_cast<float>(width) / static_cast<float>(height);
-    projectionMatrix = Mat4::perspective(60.0f, ratio, 0.1f, 10000.0f);
-    GL(glViewport(0, 0, width, height));
+  virtual void resize(const Dimensions winDim, const Dimensions fbDim) override {
+    GLApp::resize(winDim, fbDim);
+    projectionMatrix = Mat4::perspective(60.0f, fbDim.aspect(), 0.1f, 10000.0f);
   }
 
   void setupGeometry() {
     lightPosBuffer.setData(UnitCube::vertices,
-                            sizeof(UnitCube::vertices)/sizeof(UnitCube::vertices[0]),
-                            3, GL_STATIC_DRAW);
+                           sizeof(UnitCube::vertices)/sizeof(UnitCube::vertices[0]),
+                           3, GL_STATIC_DRAW);
     lightArray.connectVertexAttrib(lightPosBuffer, pLight, "vertexPosition", 3);
     lightIndexBuffer.setData(UnitCube::indices, sizeof(UnitCube::indices)/sizeof(UnitCube::indices[0]));
 
 
     planePosBuffer.setData(UnitPlane::vertices,
-                        sizeof(UnitPlane::vertices)/sizeof(UnitPlane::vertices[0]),
-                        3, GL_STATIC_DRAW);
+                           sizeof(UnitPlane::vertices)/sizeof(UnitPlane::vertices[0]),
+                           3, GL_STATIC_DRAW);
     planeArray.connectVertexAttrib(planePosBuffer, pPhongBumpTex, "vertexPosition", 3);
     planeNormalBuffer.setData(UnitPlane::normals,
-                           sizeof(UnitPlane::normals)/sizeof(UnitPlane::normals[0]),
-                           3, GL_STATIC_DRAW);
+                              sizeof(UnitPlane::normals)/sizeof(UnitPlane::normals[0]),
+                              3, GL_STATIC_DRAW);
     planeArray.connectVertexAttrib(planeNormalBuffer, pPhongBumpTex, "vertexNormal", 3);
     planeTangBuffer.setData(UnitPlane::tangents,
-                           sizeof(UnitPlane::tangents)/sizeof(UnitPlane::tangents[0]),
-                           3, GL_STATIC_DRAW);
+                            sizeof(UnitPlane::tangents)/sizeof(UnitPlane::tangents[0]),
+                            3, GL_STATIC_DRAW);
     planeArray.connectVertexAttrib(planeTangBuffer, pPhongBumpTex, "vertexTangent", 3);
     planeBinBuffer.setData(UnitPlane::binormals,
                            sizeof(UnitPlane::binormals)/sizeof(UnitPlane::binormals[0]),
                            3, GL_STATIC_DRAW);
     planeArray.connectVertexAttrib(planeBinBuffer, pPhongBumpTex, "vertexBinormal", 3);
     planeTexCoordBuffer.setData(UnitPlane::texCoords,
-                              sizeof(UnitPlane::texCoords)/sizeof(UnitPlane::texCoords[0]),
-                              2, GL_STATIC_DRAW);
+                                sizeof(UnitPlane::texCoords)/sizeof(UnitPlane::texCoords[0]),
+                                2, GL_STATIC_DRAW);
     planeArray.connectVertexAttrib(planeTexCoordBuffer, pPhongBumpTex, "vertexTexCoords", 2);
 
     teapotPosBuffer.setData(Teapot::vertices,
-                           sizeof(Teapot::vertices)/sizeof(Teapot::vertices[0]),
-                           3, GL_STATIC_DRAW);
+                            sizeof(Teapot::vertices)/sizeof(Teapot::vertices[0]),
+                            3, GL_STATIC_DRAW);
     teapotArray.connectVertexAttrib(teapotPosBuffer, pPhongBump, "vertexPosition", 3);
     teapotNormalBuffer.setData(Teapot::normals,
-                              sizeof(Teapot::normals)/sizeof(Teapot::normals[0]),
-                              3, GL_STATIC_DRAW);
+                               sizeof(Teapot::normals)/sizeof(Teapot::normals[0]),
+                               3, GL_STATIC_DRAW);
     teapotArray.connectVertexAttrib(teapotNormalBuffer, pPhongBump, "vertexNormal", 3);
     teapotTangBuffer.setData(Teapot::tangents,
-                            sizeof(Teapot::tangents)/sizeof(Teapot::tangents[0]),
-                            3, GL_STATIC_DRAW);
+                             sizeof(Teapot::tangents)/sizeof(Teapot::tangents[0]),
+                             3, GL_STATIC_DRAW);
     teapotArray.connectVertexAttrib(teapotTangBuffer, pPhongBump, "vertexTangent", 3);
     teapotBinBuffer.setData(Teapot::binormals,
-                           sizeof(Teapot::binormals)/sizeof(Teapot::binormals[0]),
-                           3, GL_STATIC_DRAW);
+                            sizeof(Teapot::binormals)/sizeof(Teapot::binormals[0]),
+                            3, GL_STATIC_DRAW);
     teapotArray.connectVertexAttrib(teapotBinBuffer, pPhongBump, "vertexBinormal", 3);
     teapotTexCoordBuffer.setData(Teapot::texCoords,
-                                sizeof(Teapot::texCoords)/sizeof(Teapot::texCoords[0]),
-                                3, GL_STATIC_DRAW);
+                                 sizeof(Teapot::texCoords)/sizeof(Teapot::texCoords[0]),
+                                 3, GL_STATIC_DRAW);
     teapotArray.connectVertexAttrib(teapotTexCoordBuffer, pPhongBump, "vertexTexCoords", 3);
     teapotIndexBuffer.setData(Teapot::indices, sizeof(Teapot::indices)/sizeof(Teapot::indices[0]));
   }
@@ -263,7 +261,7 @@ public:
       cameraActive = true;
       firstCameraUpdate = true;
     } else if ((button == GLENV_MOUSE_BUTTON_LEFT ||
-              button == GLENV_MOUSE_BUTTON_RIGHT) && action == GLENV_MOUSE_RELEASE) {
+                button == GLENV_MOUSE_BUTTON_RIGHT) && action == GLENV_MOUSE_RELEASE) {
       cameraActive = false;
       firstCameraUpdate = false;
     }
@@ -275,10 +273,9 @@ public:
     viewPosition[0] -= float(x_offset) * f;
     viewPosition[2] -= float(y_offset) * f;
   }
-};
+} myApp;
 
 int main(int argc, char** argv) {
-  MyGLApp myApp;
   myApp.run();
   return EXIT_SUCCESS;
 }

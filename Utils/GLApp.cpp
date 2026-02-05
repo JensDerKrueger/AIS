@@ -1,4 +1,11 @@
 #include "GLApp.h"
+#include <filesystem>
+#include <chrono>
+#include <ctime>
+#include <iomanip>
+#include <sstream>
+#include <string>
+
 
 #ifndef __EMSCRIPTEN__
 GLApp* GLApp::staticAppPtr = nullptr;
@@ -6,142 +13,17 @@ GLApp* GLApp::staticAppPtr = nullptr;
 
 GLApp::GLApp(uint32_t w, uint32_t h, uint32_t s,
              const std::string& title,
-             bool fpsCounter, bool sync) :
+             bool fpsCounter, bool sync,
+             bool exactPixels,
+             const std::vector<std::string>& args) :
 #ifdef __EMSCRIPTEN__
-  glEnv{w,h,s,title,fpsCounter,sync,3,0,true},
+  glEnv{w,h,s,title,fpsCounter,sync,exactPixels,3,0,true,},
 #else
-  glEnv{w,h,s,title,fpsCounter,sync,4,1,true},
+  glEnv{w,h,s,title,fpsCounter,sync,exactPixels,4,1,true},
 #endif
   p{},
   mv{},
-#ifdef __EMSCRIPTEN__
-  simpleProg{GLProgram::createFromString(R"(#version 300 es
-    uniform mat4 MVP;
-    in vec3 vPos;
-    in vec4 vColor;
-    out vec4 color;
-    void main() {
-      gl_Position = MVP * vec4(vPos, 1.0);
-      color = vColor;
-    }
-  )",R"(#version 300 es
-    precision mediump float;
-    in vec4 color;
-    out vec4 FragColor;
-    void main() {
-      FragColor = color;
-    }
-  )")},
-  simplePointProg{GLProgram::createFromString(R"(#version 300 es
-    uniform mat4 MVP;
-    uniform float pointSize;
-    in vec3 vPos;
-    in vec4 vColor;
-    out vec4 color;
-    void main() {
-      gl_Position = MVP * vec4(vPos, 1.0);
-      gl_PointSize = pointSize;
-      color = vColor;
-    }
-  )",R"(#version 300 es
-    precision mediump float;
-    in vec4 color;
-    out vec4 FragColor;
-    void main() {
-      FragColor = color;
-    }
-  )")},
-  simpleSpriteProg{GLProgram::createFromString(R"(#version 300 es
-    uniform mat4 MVP;
-    uniform float pointSize;
-    in vec3 vPos;
-    in vec4 vColor;
-    out vec4 color;
-    void main() {
-      gl_Position = MVP * vec4(vPos, 1.0);
-      gl_PointSize = pointSize;
-      color = vColor;
-    }
-  )",R"(#version 300 es
-    precision mediump float;
-    uniform sampler2D pointSprite;
-    in vec4 color;
-    out vec4 FragColor;
-    void main() {
-      FragColor = color*texture(pointSprite, gl_PointCoord);
-    }
-  )")},
-  simpleHLSpriteProg{GLProgram::createFromString(R"(#version 300 es
-    uniform mat4 MVP;
-    uniform float pointSize;
-    in vec3 vPos;
-    in vec4 vColor;
-    out vec4 color;
-    void main() {
-      gl_Position = MVP * vec4(vPos, 1.0);
-      gl_PointSize = pointSize;
-      color = vColor;
-    }
-  )",R"(#version 300 es
-    precision mediump float;
-    uniform sampler2D pointSprite;
-    uniform sampler2D pointSpriteHighlight;
-    in vec4 color;
-    out vec4 FragColor;
-    void main() {
-      FragColor = color*texture(pointSprite, gl_PointCoord)+texture(pointSpriteHighlight, gl_PointCoord);
-    }
-  )")},
-  simpleTexProg{GLProgram::createFromString(R"(#version 300 es
-    uniform mat4 MVP;
-    in vec3 vPos;
-    in vec2 vTexCoords;
-    out vec4 color;
-    out vec2 texCoords;
-    void main() {
-      gl_Position = MVP * vec4(vPos, 1.0);
-      texCoords = vTexCoords;
-    }
-  )",R"(#version 300 es
-    precision mediump float;
-    uniform sampler2D raster;
-    in vec2 texCoords;
-    out vec4 FragColor;
-    void main() {
-      FragColor = texture(raster, texCoords);
-    }
-  )")},
-  simpleLightProg{GLProgram::createFromString(R"(#version 300 es
-  uniform mat4 MVP;
-  uniform mat4 MV;
-  uniform mat4 MVit;
-  in vec3 vPos;
-  in vec4 vColor;
-  in vec3 vNormal;
-  out vec4 color;
-  out vec3 normal;
-  out vec3 pos;
-  void main() {
-    gl_Position = MVP * vec4(vPos, 1.0);
-    pos = (MV * vec4(vPos, 1.0)).xyz;
-    color = vColor;
-    normal = (MVit * vec4(vNormal, 0.0)).xyz;
-  }
-  )",R"(#version 300 es
-    precision mediump float;
-    in vec4 color;
-    in vec3 pos;
-  in vec3 normal;
-  out vec4 FragColor;
-  void main() {
-    vec3 nnormal = normalize(normal);
-    vec3 nlightDir = normalize(vec3(0.0,0.0,0.0)-pos);
-    FragColor = vec4(color.rgb*abs(dot(nlightDir,nnormal)),color.a);
-  }
-  )")},
-#else
   simpleProg{GLProgram::createFromString(
-     "#version 410\n"
      "uniform mat4 MVP;\n"
      "layout (location = 0) in vec3 vPos;\n"
      "layout (location = 1) in vec4 vColor;\n"
@@ -150,14 +32,12 @@ GLApp::GLApp(uint32_t w, uint32_t h, uint32_t s,
      "    gl_Position = MVP * vec4(vPos, 1.0);\n"
      "    color = vColor;\n"
      "}\n",
-     "#version 410\n"
      "in vec4 color;\n"
      "out vec4 FragColor;\n"
      "void main() {\n"
      "    FragColor = color;\n"
-     "}\n")},
+     "}\n","",false,true)},
   simplePointProg{GLProgram::createFromString(
-     "#version 410\n"
      "uniform mat4 MVP;\n"
      "layout (location = 0) in vec3 vPos;\n"
      "layout (location = 1) in vec4 vColor;\n"
@@ -166,14 +46,12 @@ GLApp::GLApp(uint32_t w, uint32_t h, uint32_t s,
      "    gl_Position = MVP * vec4(vPos, 1.0);\n"
      "    color = vColor;\n"
      "}\n",
-     "#version 410\n"
      "in vec4 color;\n"
      "out vec4 FragColor;\n"
      "void main() {\n"
      "    FragColor = color;\n"
-     "}\n")},
+     "}\n","",false,true)},
   simpleSpriteProg{GLProgram::createFromString(
-     "#version 410\n"
      "uniform mat4 MVP;\n"
      "layout (location = 0) in vec3 vPos;\n"
      "layout (location = 1) in vec4 vColor;\n"
@@ -182,15 +60,13 @@ GLApp::GLApp(uint32_t w, uint32_t h, uint32_t s,
      "    gl_Position = MVP * vec4(vPos, 1.0);\n"
      "    color = vColor;\n"
      "}\n",
-     "#version 410\n"
      "uniform sampler2D pointSprite;\n"
      "in vec4 color;\n"
      "out vec4 FragColor;\n"
      "void main() {\n"
      "    FragColor = color*texture(pointSprite, gl_PointCoord);\n"
-     "}\n")},
+     "}\n","",false,true)},
   simpleHLSpriteProg{GLProgram::createFromString(
-     "#version 410\n"
      "uniform mat4 MVP;\n"
      "layout (location = 0) in vec3 vPos;\n"
      "layout (location = 1) in vec4 vColor;\n"
@@ -199,16 +75,14 @@ GLApp::GLApp(uint32_t w, uint32_t h, uint32_t s,
      "    gl_Position = MVP * vec4(vPos, 1.0);\n"
      "    color = vColor;\n"
      "}\n",
-     "#version 410\n"
      "uniform sampler2D pointSprite;\n"
      "uniform sampler2D pointSpriteHighlight;\n"
      "in vec4 color;\n"
      "out vec4 FragColor;\n"
      "void main() {\n"
      "    FragColor = color*texture(pointSprite, gl_PointCoord)+texture(pointSpriteHighlight, gl_PointCoord);\n"
-     "}\n")},
+     "}\n","",false,true)},
   simpleTexProg{GLProgram::createFromString(
-     "#version 410\n"
      "uniform mat4 MVP;\n"
      "layout (location = 0) in vec3 vPos;\n"
      "layout (location = 1) in vec2 vTexCoords;\n"
@@ -218,15 +92,13 @@ GLApp::GLApp(uint32_t w, uint32_t h, uint32_t s,
      "    gl_Position = MVP * vec4(vPos, 1.0);\n"
      "    texCoords = vTexCoords;\n"
      "}\n",
-     "#version 410\n"
      "uniform sampler2D raster;\n"
      "in vec2 texCoords;\n"
      "out vec4 FragColor;\n"
      "void main() {\n"
      "    FragColor = texture(raster, texCoords);\n"
-     "}\n")},
+     "}\n","",false,true)},
   simpleLightProg{GLProgram::createFromString(
-     "#version 410\n"
      "uniform mat4 MVP;\n"
      "uniform mat4 MV;\n"
      "uniform mat4 MVit;\n"
@@ -242,7 +114,6 @@ GLApp::GLApp(uint32_t w, uint32_t h, uint32_t s,
      "    color = vColor;\n"
      "    normal = (MVit * vec4(vNormal, 0.0)).xyz;\n"
      "}\n",
-     "#version 410\n"
      "in vec4 color;\n"
      "in vec3 pos;\n"
      "in vec3 normal;\n"
@@ -251,8 +122,7 @@ GLApp::GLApp(uint32_t w, uint32_t h, uint32_t s,
      "    vec3 nnormal = normalize(normal);"
      "    vec3 nlightDir = normalize(vec3(0.0,0.0,0.0)-pos);"
      "    FragColor = color*abs(dot(nlightDir,nnormal));\n"
-     "}\n")},
-#endif
+     "}\n","",false,true)},
   simpleArray{},
   simpleVb{GL_ARRAY_BUFFER},
   raster{GL_LINEAR, GL_LINEAR,GL_CLAMP_TO_EDGE,GL_CLAMP_TO_EDGE},
@@ -261,19 +131,7 @@ GLApp::GLApp(uint32_t w, uint32_t h, uint32_t s,
   resumeTime{0},
   animationActive{true}
 {
-#ifdef __EMSCRIPTEN__
-  glEnv.setMouseCallbacks(cursorPositionCallback, mouseButtonCallback,
-                          mouseButtonUpCallback, mouseButtonDownCallback,
-                          scrollCallback, this);
-  glEnv.setKeyCallback(keyCallback, this);
-  glEnv.setResizeCallback(sizeCallback, this);
-#else
-  staticAppPtr = this;
-  glEnv.setMouseCallbacks(cursorPositionCallback, mouseButtonCallback, scrollCallback);
-  glEnv.setKeyCallbacks(keyCallback, keyCharCallback);
-  glEnv.setResizeCallback(sizeCallback);
-#endif
-
+  setInteractionCallbacks();
   resetPointTexture();
   
   // setup a minimal shader and buffer
@@ -284,11 +142,46 @@ GLApp::GLApp(uint32_t w, uint32_t h, uint32_t s,
 #else
   startTime = glfwGetTime();
 #endif
-  Dimensions dim{ glEnv.getFramebufferSize() };
-  glViewport(0, 0, GLsizei(dim.width), GLsizei(dim.height));
+  const Dimensions dim = glEnv.getFramebufferSize();
+  GL(glViewport(0, 0, GLsizei(dim.width), GLsizei(dim.height)));
+
+  initScript(args);
 }
 
 GLApp::~GLApp() {
+}
+
+void GLApp::setInteractionCallbacks() {
+  if (interaction) {
+#ifdef __EMSCRIPTEN__
+    glEnv.setMouseCallbacks(cursorPositionCallback,
+                            mouseButtonUpCallback,
+                            mouseButtonDownCallback,
+                            scrollCallback,
+                            touchStartCallback,
+                            touchEndCallback,
+                            touchMoveCallback,
+                            this);
+    glEnv.setKeyCallback(keyCallback, this);
+    glEnv.setResizeCallback(sizeCallback, this);
+#else
+    staticAppPtr = this;
+    glEnv.setMouseCallbacks(cursorPositionCallback,
+                            mouseButtonCallback,
+                            scrollCallback);
+    glEnv.setKeyCallbacks(keyCallback, keyCharCallback);
+    glEnv.setResizeCallback(sizeCallback);
+#endif
+  } else {
+#ifdef __EMSCRIPTEN__
+    glEnv.setMouseCallbacks(nullptr, nullptr, nullptr, nullptr,
+                            nullptr, nullptr, nullptr, this);
+    glEnv.setKeyCallback(nullptr, this);
+#else
+    glEnv.setMouseCallbacks(nullptr, nullptr, nullptr);
+    glEnv.setKeyCallbacks(nullptr, nullptr);
+#endif
+  }
 }
 
 void GLApp::setPointTexture(const Image& shape) {
@@ -325,18 +218,41 @@ void GLApp::resetPointHighlightTexture() {
   setPointHighlightTexture(i);
 }
 
+void GLApp::processScript() {
+  if (scriptRunning) {
+    CommandResultCode result = interpreter.runBatch();
+
+    if (result == CommandResultCode::success) {
+    } else if (result == CommandResultCode::triggerLoop) {
+    } else if (result == CommandResultCode::waitingNoop) {
+    } else if (result == CommandResultCode::finished) {
+      scriptRunning = false;
+    } else {
+      std::cerr << "Scripting Error: " << result << " in line " << interpreter.getLastInstructionIndex()+1 << "\n";
+      scriptRunning = false;
+    }
+  }
+}
 void GLApp::mainLoop() {
 #ifdef __EMSCRIPTEN__
+  processScript();
   if (animationActive) {
     animate(emscripten_performance_now()/1000.0-startTime);
   }
+  glEnv.beginOfFrame();
+  GL(glClearColor(background.x,background.y,background.z,background.w));
+  GL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
   draw();
   glEnv.endOfFrame();
 #else
   do {
+    processScript();
     if (animationActive) {
       animate(glfwGetTime()-startTime);
     }
+    glEnv.beginOfFrame();
+    GL(glClearColor(background.x,background.y,background.z,background.w));
+    GL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
     draw();
     glEnv.endOfFrame();
   } while (!glEnv.shouldClose());
@@ -345,8 +261,11 @@ void GLApp::mainLoop() {
 
 void GLApp::run() {
   init();
-  const Dimensions dim{ glEnv.getFramebufferSize() };
-  resize(GLsizei(dim.width), GLsizei(dim.height));
+  reset();
+  const Dimensions winDim = glEnv.getWindowSize();
+  const Dimensions fbDim  = glEnv.getFramebufferSize();
+
+  resize(winDim, fbDim); // GLsizei(dim.width), GLsizei(dim.height));
 
 #ifdef __EMSCRIPTEN__
   emscripten_set_main_loop_arg(mainLoopWrapper, this, 0, 1);
@@ -356,9 +275,8 @@ void GLApp::run() {
 #endif
 }
  
-void GLApp::resize(int width, int height) {
-  const Dimensions dim{ glEnv.getFramebufferSize() };
-  GL(glViewport(0, 0, GLsizei(dim.width), GLsizei(dim.height)));
+void GLApp::resize(const Dimensions winDim, const Dimensions fbDim) {
+  GL(glViewport(0, 0, GLsizei(fbDim.width), GLsizei(fbDim.height)));
 }
 
 
@@ -527,8 +445,6 @@ void GLApp::drawPoints(const std::vector<float>& data, float pointSize, bool use
       simpleSpriteProg.enable();
 #ifdef __EMSCRIPTEN__
       simpleSpriteProg.setUniform("pointSize", pointSize);
-#else
-      GL(glPointSize(pointSize));
 #endif
       simpleSpriteProg.setTexture("pointSprite", pointSprite, 0);
       simpleVb.setData(data,7,GL_DYNAMIC_DRAW);
@@ -540,7 +456,7 @@ void GLApp::drawPoints(const std::vector<float>& data, float pointSize, bool use
   } else {
     simplePointProg.enable();
 #ifdef __EMSCRIPTEN__
-    simplePointProg.setUniform("pointSize", pointSize);
+    simpleSpriteProg.setUniform("pointSize", pointSize);
 #else
     GL(glPointSize(pointSize));
 #endif
@@ -859,3 +775,252 @@ Mat4 GLApp::computeImageTransformFixedWidth(const Vec2ui& imageSize,
   const float ay = imageSize.y/float(s.height);
   return Mat4::translation(center) * Mat4::scaling({width, width*ay/ax, 1.0f});
 }
+
+static std::string getScriptFilename(const std::vector<std::string>& args) {
+  for (std::size_t i = 0; i + 1 < args.size(); ++i) {
+    std::string key = args[i];
+    std::transform(key.begin(), key.end(), key.begin(),
+                   [](unsigned char c){ return std::tolower(c); });
+    if (key == "--script") {
+      return args[i + 1];
+    }
+  }
+  return "";
+}
+
+void GLApp::initScript(const std::vector<std::string>& args) {
+  const std::string scriptName = getScriptFilename(args);
+  if (!scriptName.empty()) {
+    scriptRunning = interpreter.loadFromFile(scriptName) == CommandResultCode::success;
+    interpreter.registerCommand(
+                                "reset",
+                                [this]() {
+                                  reset();
+                                }
+                                );
+    interpreter.registerCommand(
+                                "setinteraction",
+                                [this](bool enabled) {
+                                  interaction = enabled;
+                                  setInteractionCallbacks();
+                                }
+                                );
+    interpreter.registerCommand(
+                                "setbackground",
+                                [this](float r, float g, float b, float a) {
+                                  setBackground(r,g,b,a);
+                                }
+                                );
+    interpreter.registerCommand(
+                                "resize",
+                                [this](int width, int height) {
+                                  glEnv.setSize(width, height);
+                                }
+                                );
+    interpreter.registerCommand(
+                                "screenshot",
+                                [this]() -> CommandResultCode {
+                                  std::filesystem::path base = logDir;
+
+                                  // make sure both front and back buffer
+                                  // are updated
+                                  static int needsUpdate = 2;
+                                  if (needsUpdate) {
+                                    needsUpdate--;
+                                    return CommandResultCode::waitingNoop;
+                                  } else {
+                                    needsUpdate = 2;
+                                  }
+                                  static uint32_t imageCounter = 0;
+                                  std::stringstream ss;
+                                  ss << "screenshot-" << std::setw(6) << std::setfill('0') << imageCounter++ << ".bmp";
+
+                                  std::filesystem::path filePath = base / ss.str();
+
+                                  return GLScreenshot::saveBmp(filePath.string())
+                                  ? CommandResultCode::success
+                                  : CommandResultCode::callbackError;
+                                }
+                                );
+    interpreter.registerCommand(
+                                "screenshot",
+                                [this](std::string filename) -> CommandResultCode {
+                                  std::filesystem::path base = logDir;
+                                  std::filesystem::path filePath = base / filename;
+
+                                  static bool needsUpdate = true;
+                                  if (needsUpdate) {
+                                    needsUpdate = false;
+                                    return CommandResultCode::waitingNoop;
+                                  } else {
+                                    needsUpdate = true;
+                                  }
+
+                                  return GLScreenshot::saveBmp(filePath.string())
+                                  ? CommandResultCode::success
+                                  : CommandResultCode::callbackError;
+                                }
+                                );
+
+    interpreter.registerCommand(
+                                "setfpswindow",
+                                [this](int window) -> CommandResultCode {
+                                  if (window < 1) {
+                                    return CommandResultCode::invalidArguments;
+                                  }
+                                  glEnv.setFPSAccumulationInterval(static_cast<uint64_t>(window));
+                                  return CommandResultCode::success;
+                                }
+                                );
+    interpreter.registerCommand(
+                                "clearlog",
+                                [this]() -> CommandResultCode {
+                                  if (scriptLogFile.empty()) {
+                                    return CommandResultCode::success;
+                                  }
+                                  std::filesystem::path base = logDir;
+                                  std::filesystem::path filePath = base / scriptLogFile;
+                                  std::filesystem::remove(filePath);
+                                  return CommandResultCode::success;
+                                }
+                                );
+    interpreter.registerCommand(
+                                "logfile",
+                                [this](std::string filename) {
+                                  scriptLogFile = std::move(filename);
+                                }
+                                );
+    interpreter.registerCommand(
+                                "logtime",
+                                [this]() -> CommandResultCode {
+                                  auto now = std::chrono::system_clock::now();
+                                  std::time_t t = std::chrono::system_clock::to_time_t(now);
+
+                                  std::stringstream s;
+#ifdef _WIN32
+                                  std::tm tm_buf{};
+                                  errno_t err = localtime_s(&tm_buf, &t);
+                                  if (err != 0) {
+                                    return CommandResultCode::callbackError;
+                                  }
+                                  s << std::put_time(&tm_buf, "%Y-%m-%d %H:%M:%S");
+#else
+                                  s << std::put_time(std::localtime(&t), "%Y-%m-%d %H:%M:%S");
+#endif
+                                  if (writeScriptLog(s.str())) {
+                                    return CommandResultCode::success;
+                                  }
+                                  return CommandResultCode::callbackError;
+                                }
+                                );
+    interpreter.registerCommand(
+                                "logfps",
+                                [this]() -> CommandResultCode {
+                                  if (!glEnv.getFPSCounterStatus()) {
+                                    if (writeScriptLog("fpsCounter disabled")) {
+                                      return CommandResultCode::success;
+                                    }
+                                    return CommandResultCode::callbackError;
+                                  }
+
+                                  if (glEnv.getFps() == 0) {
+                                    return CommandResultCode::waitingNoop;
+                                  }
+
+                                  std::stringstream s;
+                                  s << static_cast<int>(std::ceil(glEnv.getFps())) << " fps";
+                                  if (writeScriptLog(s.str())) {
+                                    return CommandResultCode::success;
+                                  }
+                                  return CommandResultCode::callbackError;
+                                }
+                                );
+
+    interpreter.registerCommand(
+                                "logGLInfo",
+                                [this](bool includeExtensions) -> CommandResultCode {
+                                  const std::string result = glEnv.getOpenGlInfoString(includeExtensions);
+                                  if (writeScriptLog(result)) {
+                                    return CommandResultCode::success;
+                                  }
+                                  return CommandResultCode::callbackError;
+                                }
+                                );
+    interpreter.registerCommand(
+                                "log",
+                                CommandInterpreter::Callback{
+                                  [this](const std::vector<std::string>& args) {
+                                    std::string result;
+                                    for (size_t i = 0; i < args.size(); ++i) {
+                                      result += args[i];
+                                      if (i + 1 < args.size()) result += ' ';
+                                    }
+                                    return writeScriptLog(result) ? CommandResultCode::success
+                                    : CommandResultCode::callbackError;
+                                  }
+                                }
+                                );
+
+    interpreter.registerCommand(
+                                "setdir",
+                                [this](std::string dir) -> CommandResultCode {
+                                  std::error_code ec;
+                                  std::filesystem::create_directories(dir, ec);
+                                  if (ec) {
+                                    return CommandResultCode::callbackError;
+                                  }
+                                  logDir = std::move(dir);
+                                  return CommandResultCode::success;
+                                }
+                                );
+
+    interpreter.registerCommand(
+                                "quit",
+                                [this]() {
+                                  closeWindow();
+                                }
+                                );
+    interpreter.setUnknownCommandHandler(
+                                         [](const std::string &command,
+                                                const std::vector<std::string> &args) {
+                                                  std::cerr << "unknown command: " << command << "\n";
+                                                  return CommandResultCode::unknownCommand;
+                                                });
+  } else {
+    scriptRunning = false;
+  }
+}
+
+bool GLApp::writeScriptLog(const std::string &text) const {
+  if (scriptLogFile.empty()) return false;
+
+  std::filesystem::path base = logDir;
+  std::filesystem::path filePath = base / scriptLogFile;
+
+  std::ofstream out(filePath, std::ios::app);
+  if (!out) return false;
+
+  out << text << std::endl;
+  return true;
+}
+
+#ifdef _WIN32
+#include <Windows.h>
+
+std::vector<std::string> getArgsWindows() {
+  int argc = 0;
+  LPWSTR* argv = CommandLineToArgvW(GetCommandLineW(), &argc);
+  std::vector<std::string> args;
+
+  if (argv) {
+    for (int i = 1; i < argc; ++i) {
+      int len = WideCharToMultiByte(CP_UTF8, 0, argv[i], -1, nullptr, 0, nullptr, nullptr);
+      std::string s(len - 1, '\0');
+      WideCharToMultiByte(CP_UTF8, 0, argv[i], -1, s.data(), len, nullptr, nullptr);
+      args.push_back(std::move(s));
+    }
+    LocalFree(argv);
+  }
+  return args;
+}
+#endif

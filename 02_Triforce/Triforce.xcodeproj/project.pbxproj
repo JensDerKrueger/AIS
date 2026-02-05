@@ -59,6 +59,8 @@
 		56C3089A2ADFE5FC001E10D2 /* Vec2.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C3085F2ADFE562001E10D2 /* Vec2.h */; };
 		56C3089B2ADFE5FC001E10D2 /* Vec3.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C3085A2ADFE562001E10D2 /* Vec3.h */; };
 		56C3089C2ADFE5FC001E10D2 /* Vec4.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C3085B2ADFE562001E10D2 /* Vec4.h */; };
+		56E2CB382F30EAB500627B39 /* CommandInterpreter.h in Headers */ = {isa = PBXBuildFile; fileRef = 56E2CB362F30EAB500627B39 /* CommandInterpreter.h */; };
+		56E2CB392F30EAB500627B39 /* CommandInterpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56E2CB372F30EAB500627B39 /* CommandInterpreter.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +141,8 @@
 		56C308612ADFE562001E10D2 /* Mat4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Mat4.h; path = ../Utils/Mat4.h; sourceTree = "<group>"; };
 		56C308622ADFE562001E10D2 /* GLTextureCube.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GLTextureCube.cpp; path = ../Utils/GLTextureCube.cpp; sourceTree = "<group>"; };
 		56C308672ADFE5EE001E10D2 /* libUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		56E2CB362F30EAB500627B39 /* CommandInterpreter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandInterpreter.h; path = ../Utils/CommandInterpreter.h; sourceTree = SOURCE_ROOT; };
+		56E2CB372F30EAB500627B39 /* CommandInterpreter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandInterpreter.cpp; path = ../Utils/CommandInterpreter.cpp; sourceTree = SOURCE_ROOT; };
 		A231F0FF25EAF61A00CBFC23 /* Triforce-Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Triforce-Demo"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -169,6 +173,8 @@
 				56C308342ADFE53F001E10D2 /* bmp.h */,
 				56C3082E2ADFE53F001E10D2 /* Camera.h */,
 				56C308382ADFE53F001E10D2 /* ColorConversion.h */,
+				56E2CB362F30EAB500627B39 /* CommandInterpreter.h */,
+				56E2CB372F30EAB500627B39 /* CommandInterpreter.cpp */,
 				56C3082B2ADFE53F001E10D2 /* FontRenderer.cpp */,
 				56C308352ADFE53F001E10D2 /* FontRenderer.h */,
 				56C3083B2ADFE53F001E10D2 /* GLApp.cpp */,
@@ -243,6 +249,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56E2CB382F30EAB500627B39 /* CommandInterpreter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +340,7 @@
 				56C308702ADFE5FC001E10D2 /* ColorConversion.h in Sources */,
 				56C308712ADFE5FC001E10D2 /* FontRenderer.cpp in Sources */,
 				56C308722ADFE5FC001E10D2 /* FontRenderer.h in Sources */,
+				56E2CB392F30EAB500627B39 /* CommandInterpreter.cpp in Sources */,
 				56C308732ADFE5FC001E10D2 /* GLApp.cpp in Sources */,
 				56C308742ADFE5FC001E10D2 /* GLApp.h in Sources */,
 				56C308752ADFE5FC001E10D2 /* GLArray.cpp in Sources */,

@@ -10,10 +10,7 @@ namespace ImageLoader {
     int width, height, nrComponents;
     stbi_uc* image_data = stbi_load(filename.c_str(), &width, &height, &nrComponents, 0);
     if (image_data) {
-      const uint32_t uw = uint32_t(width);
-      const uint32_t uh = uint32_t(height);
-      const uint8_t uc = uint8_t(nrComponents);
-      Image image(uw, uh, uc);
+      Image image(width,height,nrComponents);
 
       std::copy(image_data,
                 image_data + (width * height * nrComponents),

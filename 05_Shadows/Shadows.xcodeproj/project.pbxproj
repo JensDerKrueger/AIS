@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5638CB452F34993F00A27C6F /* CommandInterpreter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5638CB432F34993F00A27C6F /* CommandInterpreter.h */; };
+		5638CB462F34993F00A27C6F /* CommandInterpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5638CB442F34993F00A27C6F /* CommandInterpreter.cpp */; };
 		5662251B2B14D09F00D3C15F /* light.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566225002B14CF9700D3C15F /* light.frag */; };
 		5662251C2B14D09F00D3C15F /* light.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566224FD2B14CF9700D3C15F /* light.vert */; };
 		566225212B14D0BE00D3C15F /* Stones_Diffuse.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566225032B14CF9700D3C15F /* Stones_Diffuse.png */; };
 		566225222B14D0BE00D3C15F /* Stones_Normals.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566224FA2B14CF9600D3C15F /* Stones_Normals.png */; };
 		566225232B14D0BE00D3C15F /* Stones_Specular.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566224FC2B14CF9600D3C15F /* Stones_Specular.png */; };
-		566225242B14D0BE00D3C15F /* UDE_Normals.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566225022B14CF9700D3C15F /* UDE_Normals.png */; };
+		566225242B14D0BE00D3C15F /* teapot_Normals.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566225022B14CF9700D3C15F /* teapot_Normals.png */; };
 		5677395325FB7BF000AB2341 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5677394C25FB7BF000AB2341 /* main.cpp */; };
 		56C3086B2ADFE5FC001E10D2 /* AbstractParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56C308282ADFE53F001E10D2 /* AbstractParticleSystem.cpp */; };
 		56C3086C2ADFE5FC001E10D2 /* AbstractParticleSystem.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C3082F2ADFE53F001E10D2 /* AbstractParticleSystem.h */; };
@@ -105,7 +107,7 @@
 				566225212B14D0BE00D3C15F /* Stones_Diffuse.png in CopyFiles */,
 				566225222B14D0BE00D3C15F /* Stones_Normals.png in CopyFiles */,
 				566225232B14D0BE00D3C15F /* Stones_Specular.png in CopyFiles */,
-				566225242B14D0BE00D3C15F /* UDE_Normals.png in CopyFiles */,
+				566225242B14D0BE00D3C15F /* teapot_Normals.png in CopyFiles */,
 				5662251B2B14D09F00D3C15F /* light.frag in CopyFiles */,
 				5662251C2B14D09F00D3C15F /* light.vert in CopyFiles */,
 			);
@@ -114,11 +116,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5638CB432F34993F00A27C6F /* CommandInterpreter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandInterpreter.h; path = ../Utils/CommandInterpreter.h; sourceTree = SOURCE_ROOT; };
+		5638CB442F34993F00A27C6F /* CommandInterpreter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandInterpreter.cpp; path = ../Utils/CommandInterpreter.cpp; sourceTree = SOURCE_ROOT; };
 		566224FA2B14CF9600D3C15F /* Stones_Normals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stones_Normals.png; path = res/Stones_Normals.png; sourceTree = "<group>"; };
 		566224FC2B14CF9600D3C15F /* Stones_Specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stones_Specular.png; path = res/Stones_Specular.png; sourceTree = "<group>"; };
 		566224FD2B14CF9700D3C15F /* light.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = light.vert; path = res/light.vert; sourceTree = "<group>"; };
 		566225002B14CF9700D3C15F /* light.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = light.frag; path = res/light.frag; sourceTree = "<group>"; };
-		566225022B14CF9700D3C15F /* UDE_Normals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UDE_Normals.png; path = res/UDE_Normals.png; sourceTree = "<group>"; };
+		566225022B14CF9700D3C15F /* teapot_Normals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = teapot_Normals.png; path = res/teapot_Normals.png; sourceTree = "<group>"; };
 		566225032B14CF9700D3C15F /* Stones_Diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stones_Diffuse.png; path = res/Stones_Diffuse.png; sourceTree = "<group>"; };
 		566225042B14CFB900D3C15F /* Teapot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teapot.h; sourceTree = "<group>"; };
 		566225052B14CFB900D3C15F /* UnitCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitCube.h; sourceTree = "<group>"; };
@@ -203,6 +207,8 @@
 			children = (
 				56C308282ADFE53F001E10D2 /* AbstractParticleSystem.cpp */,
 				56C3082F2ADFE53F001E10D2 /* AbstractParticleSystem.h */,
+				5638CB432F34993F00A27C6F /* CommandInterpreter.h */,
+				5638CB442F34993F00A27C6F /* CommandInterpreter.cpp */,
 				56C3083A2ADFE53F001E10D2 /* bmp.cpp */,
 				56C308342ADFE53F001E10D2 /* bmp.h */,
 				56C3082E2ADFE53F001E10D2 /* Camera.h */,
@@ -269,7 +275,7 @@
 				566225032B14CF9700D3C15F /* Stones_Diffuse.png */,
 				566224FA2B14CF9600D3C15F /* Stones_Normals.png */,
 				566224FC2B14CF9600D3C15F /* Stones_Specular.png */,
-				566225022B14CF9700D3C15F /* UDE_Normals.png */,
+				566225022B14CF9700D3C15F /* teapot_Normals.png */,
 				56C308262ADFE439001E10D2 /* Utils */,
 				A231F10025EAF61A00CBFC23 /* Products */,
 			);
@@ -291,6 +297,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5638CB452F34993F00A27C6F /* CommandInterpreter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +389,7 @@
 				56C308702ADFE5FC001E10D2 /* ColorConversion.h in Sources */,
 				56C308712ADFE5FC001E10D2 /* FontRenderer.cpp in Sources */,
 				56C308722ADFE5FC001E10D2 /* FontRenderer.h in Sources */,
+				5638CB462F34993F00A27C6F /* CommandInterpreter.cpp in Sources */,
 				56C308732ADFE5FC001E10D2 /* GLApp.cpp in Sources */,
 				56C308742ADFE5FC001E10D2 /* GLApp.h in Sources */,
 				56C308752ADFE5FC001E10D2 /* GLArray.cpp in Sources */,

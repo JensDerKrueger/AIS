@@ -1,14 +1,12 @@
-#version 410 core
+in vec3 vertexPosition;
+in vec3 vertexNormal;
+in vec3 vertexTangent;
+in vec3 vertexBinormal;
+in vec2 vertexTexCoords;
 
-layout(location = 0) in vec3 vertexPosition;
-layout(location = 1) in vec3 vertexNormal;
-layout(location = 2) in vec3 vertexTangent;
-layout(location = 3) in vec3 vertexBinormal;
-layout(location = 4) in vec2 vertexTexCoords;
-
-uniform mat4 MVP; // model-view-projection Matrix
-uniform mat4 MV; // model-view Matrix
-uniform mat4 MVit; // model-view inverse transpose Matrix
+uniform mat4 MVP;
+uniform mat4 MV;
+uniform mat4 MVit;
 
 out vec3 posViewSpaceInterpolated;
 out vec3 normalViewSpaceInterpolated;
@@ -17,11 +15,11 @@ out vec3 binormtViewSpaceInterpolated;
 out vec2 texCoordsInterpolated;
 
 void main() {
-  gl_Position = MVP * vec4(vertexPosition, 1);
-  posViewSpaceInterpolated    = vec3(MV * vec4(vertexPosition, 1));
+  gl_Position = MVP * vec4(vertexPosition, 1.0);
+  posViewSpaceInterpolated    = vec3(MV * vec4(vertexPosition, 1.0));
 
-  normalViewSpaceInterpolated = normalize((MVit * vec4(vertexNormal, 0)).xyz);
-  tangentViewSpaceInterpolated = normalize((MVit * vec4(vertexTangent, 0)).xyz);;
-  binormtViewSpaceInterpolated = normalize((MVit * vec4(vertexBinormal, 0)).xyz);;
+  normalViewSpaceInterpolated = normalize((MVit * vec4(vertexNormal, 0.0)).xyz);
+  tangentViewSpaceInterpolated = normalize((MVit * vec4(vertexTangent, 0.0)).xyz);;
+  binormtViewSpaceInterpolated = normalize((MVit * vec4(vertexBinormal, 0.0)).xyz);;
   texCoordsInterpolated = vertexTexCoords;
 }

@@ -49,7 +49,6 @@ public:
     time = glfwGetTime();
     setupShaders();
     setupGeometry();
-    GL(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
   }
 
   void selectShading() {
@@ -77,8 +76,6 @@ public:
     double d = t - time;
     time = t;
 
-    GL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
-
     selectShading();
     viewMatrix = Mat4::translation(viewPosition[0], viewPosition[1], viewPosition[2]);
     viewMatrix = viewMatrix * Mat4::rotationX(viewRotation[0]);
@@ -101,10 +98,9 @@ public:
 
   }
 
-  virtual void resize(int width, int height) override {
-    float ratio = static_cast<float>(width) / static_cast<float>(height);
-    projectionMatrix = Mat4::perspective(60.0f, ratio, 0.1f, 10000.0f);
-    GL(glViewport(0, 0, width, height));
+  virtual void resize(const Dimensions winDim, const Dimensions fbDim) override {
+    GLApp::resize(winDim, fbDim);
+    projectionMatrix = Mat4::perspective(60.0f, fbDim.aspect(), 0.1f, 10000.0f);
   }
 
   std::string loadFile(const std::string& filename) {
@@ -122,7 +118,8 @@ public:
 
   GLuint createShaderFromFile(GLenum type, const std::string& sourcePath) {
     const std::string shaderCode = loadFile(sourcePath);
-    const GLchar* c_shaderCode = shaderCode.c_str();
+    const std::string fullSource = GLProgram::getShaderPreamble() + shaderCode;
+    const GLchar* c_shaderCode = fullSource.c_str();
     const GLuint s = glCreateShader(type);
     GL(glShaderSource(s, 1, &c_shaderCode, NULL));
     glCompileShader(s); checkAndThrowShader(s);
@@ -291,10 +288,9 @@ public:
     viewPosition[0] -= float(x_offset) * f;
     viewPosition[2] -= float(y_offset) * f;
   }
-};
+} myApp;
 
 int main(int argc, char** argv) {
-  MyGLApp myApp;
   myApp.run();
   return EXIT_SUCCESS;
 }

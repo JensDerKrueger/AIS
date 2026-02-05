@@ -1,10 +1,8 @@
-#version 410 core
-
-layout(location = 0) in vec3 vertexPosition;
-layout(location = 1) in vec3 vertexNormal;
-layout(location = 2) in vec3 vertexTangent;
-layout(location = 3) in vec3 vertexBinormal;
-layout(location = 4) in vec2 vertexTexCoords;
+in vec3 vertexPosition;
+in vec3 vertexNormal;
+in vec3 vertexTangent;
+in vec3 vertexBinormal;
+in vec2 vertexTexCoords;
 
 uniform mat4 MVP; // model-view-projection Matrix
 uniform mat4 MV; // model-view Matrix

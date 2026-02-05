@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5638CB082F348D8300A27C6F /* teapot_normals.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB072F348D7C00A27C6F /* teapot_normals.png */; };
+		5638CB3D2F348F5500A27C6F /* CommandInterpreter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5638CB3B2F348F5500A27C6F /* CommandInterpreter.h */; };
+		5638CB3E2F348F5500A27C6F /* CommandInterpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5638CB3C2F348F5500A27C6F /* CommandInterpreter.cpp */; };
 		5662251B2B14D09F00D3C15F /* light.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566225002B14CF9700D3C15F /* light.frag */; };
 		5662251C2B14D09F00D3C15F /* light.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566224FD2B14CF9700D3C15F /* light.vert */; };
 		5662251D2B14D09F00D3C15F /* phong.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566225012B14CF9700D3C15F /* phong.frag */; };
@@ -16,7 +19,6 @@
 		566225212B14D0BE00D3C15F /* Stones_Diffuse.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566225032B14CF9700D3C15F /* Stones_Diffuse.png */; };
 		566225222B14D0BE00D3C15F /* Stones_Normals.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566224FA2B14CF9600D3C15F /* Stones_Normals.png */; };
 		566225232B14D0BE00D3C15F /* Stones_Specular.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566224FC2B14CF9600D3C15F /* Stones_Specular.png */; };
-		566225242B14D0BE00D3C15F /* UDE_Normals.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566225022B14CF9700D3C15F /* UDE_Normals.png */; };
 		5677395325FB7BF000AB2341 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5677394C25FB7BF000AB2341 /* main.cpp */; };
 		56C3086B2ADFE5FC001E10D2 /* AbstractParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56C308282ADFE53F001E10D2 /* AbstractParticleSystem.cpp */; };
 		56C3086C2ADFE5FC001E10D2 /* AbstractParticleSystem.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C3082F2ADFE53F001E10D2 /* AbstractParticleSystem.h */; };
@@ -29,7 +31,7 @@
 		56C308732ADFE5FC001E10D2 /* GLApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56C3083B2ADFE53F001E10D2 /* GLApp.cpp */; };
 		56C308742ADFE5FC001E10D2 /* GLApp.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C3082C2ADFE53F001E10D2 /* GLApp.h */; };
 		56C308752ADFE5FC001E10D2 /* GLArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56C308332ADFE53F001E10D2 /* GLArray.cpp */; };
-		56C308762ADFE5FC001E10D2 /* GLArray.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C3082A2ADFE53F001E10D2 /* GLArxray.h */; };
+		56C308762ADFE5FC001E10D2 /* GLArray.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C3082A2ADFE53F001E10D2 /* GLArray.h */; };
 		56C308772ADFE5FC001E10D2 /* GLBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56C308292ADFE53F001E10D2 /* GLBuffer.cpp */; };
 		56C308782ADFE5FC001E10D2 /* GLBuffer.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C308392ADFE53F001E10D2 /* GLBuffer.h */; };
 		56C308792ADFE5FC001E10D2 /* GLDebug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56C308312ADFE53F001E10D2 /* GLDebug.cpp */; };
@@ -103,7 +105,7 @@
 				566225212B14D0BE00D3C15F /* Stones_Diffuse.png in CopyFiles */,
 				566225222B14D0BE00D3C15F /* Stones_Normals.png in CopyFiles */,
 				566225232B14D0BE00D3C15F /* Stones_Specular.png in CopyFiles */,
-				566225242B14D0BE00D3C15F /* UDE_Normals.png in CopyFiles */,
+				5638CB082F348D8300A27C6F /* teapot_normals.png in CopyFiles */,
 				5662251B2B14D09F00D3C15F /* light.frag in CopyFiles */,
 				5662251C2B14D09F00D3C15F /* light.vert in CopyFiles */,
 				5662251D2B14D09F00D3C15F /* phong.frag in CopyFiles */,
@@ -116,6 +118,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5638CB072F348D7C00A27C6F /* teapot_normals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = teapot_normals.png; path = res/teapot_normals.png; sourceTree = "<group>"; };
+		5638CB3B2F348F5500A27C6F /* CommandInterpreter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandInterpreter.h; path = ../Utils/CommandInterpreter.h; sourceTree = SOURCE_ROOT; };
+		5638CB3C2F348F5500A27C6F /* CommandInterpreter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandInterpreter.cpp; path = ../Utils/CommandInterpreter.cpp; sourceTree = SOURCE_ROOT; };
 		566224FA2B14CF9600D3C15F /* Stones_Normals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stones_Normals.png; path = res/Stones_Normals.png; sourceTree = "<group>"; };
 		566224FB2B14CF9600D3C15F /* phong.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phong.vert; path = res/phong.vert; sourceTree = "<group>"; };
 		566224FC2B14CF9600D3C15F /* Stones_Specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stones_Specular.png; path = res/Stones_Specular.png; sourceTree = "<group>"; };
@@ -124,7 +129,6 @@
 		566224FF2B14CF9700D3C15F /* simpleTex.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = simpleTex.vert; path = res/simpleTex.vert; sourceTree = "<group>"; };
 		566225002B14CF9700D3C15F /* light.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = light.frag; path = res/light.frag; sourceTree = "<group>"; };
 		566225012B14CF9700D3C15F /* phong.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phong.frag; path = res/phong.frag; sourceTree = "<group>"; };
-		566225022B14CF9700D3C15F /* UDE_Normals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UDE_Normals.png; path = res/UDE_Normals.png; sourceTree = "<group>"; };
 		566225032B14CF9700D3C15F /* Stones_Diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stones_Diffuse.png; path = res/Stones_Diffuse.png; sourceTree = "<group>"; };
 		566225042B14CFB900D3C15F /* Teapot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teapot.h; sourceTree = "<group>"; };
 		566225052B14CFB900D3C15F /* UnitCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitCube.h; sourceTree = "<group>"; };
@@ -180,7 +184,7 @@
 		56C308612ADFE562001E10D2 /* Mat4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Mat4.h; path = ../Utils/Mat4.h; sourceTree = "<group>"; };
 		56C308622ADFE562001E10D2 /* GLTextureCube.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GLTextureCube.cpp; path = ../Utils/GLTextureCube.cpp; sourceTree = "<group>"; };
 		56C308672ADFE5EE001E10D2 /* libUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A231F0FF25EAF61A00CBFC23 /* Texture-Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Texture-Demo; sourceTree = BUILT_PRODUCTS_DIR; };
+		A231F0FF25EAF61A00CBFC23 /* Texture-Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Texture-Demo"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +241,8 @@
 				56C3084C2ADFE562001E10D2 /* GLTexture3D.h */,
 				56C308622ADFE562001E10D2 /* GLTextureCube.cpp */,
 				56C3084F2ADFE562001E10D2 /* GLTextureCube.h */,
+				5638CB3B2F348F5500A27C6F /* CommandInterpreter.h */,
+				5638CB3C2F348F5500A27C6F /* CommandInterpreter.cpp */,
 				56C308542ADFE562001E10D2 /* Grid2D.cpp */,
 				56C3084B2ADFE562001E10D2 /* Grid2D.h */,
 				56C308512ADFE562001E10D2 /* Image.cpp */,
@@ -273,7 +279,7 @@
 				566225032B14CF9700D3C15F /* Stones_Diffuse.png */,
 				566224FA2B14CF9600D3C15F /* Stones_Normals.png */,
 				566224FC2B14CF9600D3C15F /* Stones_Specular.png */,
-				566225022B14CF9700D3C15F /* UDE_Normals.png */,
+				5638CB072F348D7C00A27C6F /* teapot_normals.png */,
 				56C308262ADFE439001E10D2 /* Utils */,
 				A231F10025EAF61A00CBFC23 /* Products */,
 			);
@@ -295,6 +301,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5638CB3D2F348F5500A27C6F /* CommandInterpreter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +339,7 @@
 			dependencies = (
 				56C3089E2AE01A37001E10D2 /* PBXTargetDependency */,
 			);
-			name = Texture-Demo;
+			name = "Texture-Demo";
 			productName = "HelloGL-Demo";
 			productReference = A231F0FF25EAF61A00CBFC23 /* Texture-Demo */;
 			productType = "com.apple.product-type.tool";
@@ -367,7 +374,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A231F0FE25EAF61A00CBFC23 /* HelloShading */,
+				A231F0FE25EAF61A00CBFC23 /* Texture-Demo */,
 				56C308662ADFE5EE001E10D2 /* Utils */,
 			);
 		};
@@ -386,6 +393,7 @@
 				56C308702ADFE5FC001E10D2 /* ColorConversion.h in Sources */,
 				56C308712ADFE5FC001E10D2 /* FontRenderer.cpp in Sources */,
 				56C308722ADFE5FC001E10D2 /* FontRenderer.h in Sources */,
+				5638CB3E2F348F5500A27C6F /* CommandInterpreter.cpp in Sources */,
 				56C308732ADFE5FC001E10D2 /* GLApp.cpp in Sources */,
 				56C308742ADFE5FC001E10D2 /* GLApp.h in Sources */,
 				56C308752ADFE5FC001E10D2 /* GLArray.cpp in Sources */,
@@ -754,7 +762,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A231F10625EAF61A00CBFC23 /* Build configuration list for PBXNativeTarget "HelloShading" */ = {
+		A231F10625EAF61A00CBFC23 /* Build configuration list for PBXNativeTarget "Texture-Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A231F10725EAF61A00CBFC23 /* Debug */,

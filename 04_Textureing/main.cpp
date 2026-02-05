@@ -65,7 +65,6 @@ public:
     GL(glDisable(GL_CULL_FACE));
     GL(glEnable(GL_DEPTH_TEST));
     GL(glDepthFunc(GL_LESS));
-    GL(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
     setAnimation(false);
   }
 
@@ -79,8 +78,7 @@ public:
   }
 
   virtual void draw() override {
-    GL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
-    const Mat4 viewMatrix = 
+    const Mat4 viewMatrix =
       Mat4::translation(viewPosition[0], viewPosition[1], viewPosition[2]) *
       Mat4::rotationX(viewRotation[0]) *
       Mat4::rotationY(viewRotation[1]) *
@@ -88,7 +86,7 @@ public:
 
     pLight.enable();
 
-    const Mat4 lightModelMatrix = Mat4::rotationY(-light.angle) * 
+    const Mat4 lightModelMatrix = Mat4::rotationY(light.angle) *
                                   Mat4::translation(-35, 35, 35);
     const Vec4 lightPosition =  viewMatrix * lightModelMatrix * Vec4(0, 0, 0, 1);
 
@@ -120,10 +118,9 @@ public:
     GL(glDrawElements(GL_TRIANGLES, sizeof(Teapot::indices) / sizeof(Teapot::indices[0]), GL_UNSIGNED_INT, (void*)0));
   }
 
-  virtual void resize(int width, int height) override {
-    const float ratio = static_cast<float>(width) / static_cast<float>(height);
-    projectionMatrix = Mat4::perspective(60.0f, ratio, 0.1f, 10000.0f);
-    GL(glViewport(0, 0, width, height));
+  virtual void resize(const Dimensions winDim, const Dimensions fbDim) override {
+    GLApp::resize(winDim, fbDim);
+    projectionMatrix = Mat4::perspective(60.0f, fbDim.aspect(), 0.1f, 10000.0f);
   }
 
   void setupGeometry() {
@@ -230,10 +227,9 @@ public:
     viewPosition[0] -= float(x_offset) * f;
     viewPosition[2] -= float(y_offset) * f;
   }
-};
+} myApp;
 
 int main(int argc, char** argv) {
-  MyGLApp myApp;
   myApp.run();
   return EXIT_SUCCESS;
 }

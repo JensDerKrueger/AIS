@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5638CB412F34926A00A27C6F /* CommandInterpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5638CB402F34926A00A27C6F /* CommandInterpreter.cpp */; };
+		5638CB422F34926A00A27C6F /* CommandInterpreter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5638CB3F2F34926A00A27C6F /* CommandInterpreter.h */; };
 		5677395325FB7BF000AB2341 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5677394C25FB7BF000AB2341 /* main.cpp */; };
 		56C3086B2ADFE5FC001E10D2 /* AbstractParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56C308282ADFE53F001E10D2 /* AbstractParticleSystem.cpp */; };
 		56C3086C2ADFE5FC001E10D2 /* AbstractParticleSystem.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C3082F2ADFE53F001E10D2 /* AbstractParticleSystem.h */; };
@@ -120,6 +122,8 @@
 		560915FA2B02BF1C00316081 /* gouraud.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = gouraud.vert; path = res/shaders/gouraud.vert; sourceTree = "<group>"; };
 		560915FB2B02BF1C00316081 /* gouraud.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = gouraud.frag; path = res/shaders/gouraud.frag; sourceTree = "<group>"; };
 		560915FC2B02BF1C00316081 /* phong.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phong.vert; path = res/shaders/phong.vert; sourceTree = "<group>"; };
+		5638CB3F2F34926A00A27C6F /* CommandInterpreter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandInterpreter.h; path = ../Utils/CommandInterpreter.h; sourceTree = SOURCE_ROOT; };
+		5638CB402F34926A00A27C6F /* CommandInterpreter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandInterpreter.cpp; path = ../Utils/CommandInterpreter.cpp; sourceTree = SOURCE_ROOT; };
 		5677394C25FB7BF000AB2341 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		56C308272ADFE53F001E10D2 /* GLEnv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLEnv.h; path = ../Utils/GLEnv.h; sourceTree = "<group>"; };
 		56C308282ADFE53F001E10D2 /* AbstractParticleSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AbstractParticleSystem.cpp; path = ../Utils/AbstractParticleSystem.cpp; sourceTree = "<group>"; };
@@ -197,6 +201,8 @@
 			children = (
 				56C308282ADFE53F001E10D2 /* AbstractParticleSystem.cpp */,
 				56C3082F2ADFE53F001E10D2 /* AbstractParticleSystem.h */,
+				5638CB3F2F34926A00A27C6F /* CommandInterpreter.h */,
+				5638CB402F34926A00A27C6F /* CommandInterpreter.cpp */,
 				56C3083A2ADFE53F001E10D2 /* bmp.cpp */,
 				56C308342ADFE53F001E10D2 /* bmp.h */,
 				56C3082E2ADFE53F001E10D2 /* Camera.h */,
@@ -281,6 +287,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5638CB422F34926A00A27C6F /* CommandInterpreter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +379,7 @@
 				56C308702ADFE5FC001E10D2 /* ColorConversion.h in Sources */,
 				56C308712ADFE5FC001E10D2 /* FontRenderer.cpp in Sources */,
 				56C308722ADFE5FC001E10D2 /* FontRenderer.h in Sources */,
+				5638CB412F34926A00A27C6F /* CommandInterpreter.cpp in Sources */,
 				56C308732ADFE5FC001E10D2 /* GLApp.cpp in Sources */,
 				56C308742ADFE5FC001E10D2 /* GLApp.h in Sources */,
 				56C308752ADFE5FC001E10D2 /* GLArray.cpp in Sources */,
