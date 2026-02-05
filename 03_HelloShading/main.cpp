@@ -127,8 +127,8 @@ public:
   }
 
   void setupShaders() {
-    std::string vertexSrcPath =  "res/shaders/flat.vert";
-    std::string fragmentSrcPath =  "res/shaders/flat.frag";
+    std::string vertexSrcPath =  "flat.vert";
+    std::string fragmentSrcPath =  "flat.frag";
     GLuint vertexShader = createShaderFromFile(GL_VERTEX_SHADER, vertexSrcPath);
     GLuint fragmentShader = createShaderFromFile(GL_FRAGMENT_SHADER, fragmentSrcPath);
 
@@ -144,8 +144,8 @@ public:
     GL(glDeleteShader(vertexShader));
     GL(glDeleteShader(fragmentShader));
 
-    vertexSrcPath =  "res/shaders/gouraud.vert";
-    fragmentSrcPath =  "res/shaders/gouraud.frag";
+    vertexSrcPath =  "gouraud.vert";
+    fragmentSrcPath =  "gouraud.frag";
     vertexShader = createShaderFromFile(GL_VERTEX_SHADER, vertexSrcPath);
     fragmentShader = createShaderFromFile(GL_FRAGMENT_SHADER, fragmentSrcPath);
     pGouraud = glCreateProgram();
@@ -156,8 +156,8 @@ public:
     GL(glDeleteShader(vertexShader));
     GL(glDeleteShader(fragmentShader));
 
-    vertexSrcPath =  "res/shaders/phong.vert";
-    fragmentSrcPath =  "res/shaders/phong.frag";
+    vertexSrcPath =  "phong.vert";
+    fragmentSrcPath =  "phong.frag";
     vertexShader = createShaderFromFile(GL_VERTEX_SHADER, vertexSrcPath);
     fragmentShader = createShaderFromFile(GL_FRAGMENT_SHADER, fragmentSrcPath);
     pPhong = glCreateProgram();

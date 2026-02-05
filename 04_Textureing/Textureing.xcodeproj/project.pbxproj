@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5638CB082F348D8300A27C6F /* teapot_normals.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB072F348D7C00A27C6F /* teapot_normals.png */; };
 		5638CB3D2F348F5500A27C6F /* CommandInterpreter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5638CB3B2F348F5500A27C6F /* CommandInterpreter.h */; };
 		5638CB3E2F348F5500A27C6F /* CommandInterpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5638CB3C2F348F5500A27C6F /* CommandInterpreter.cpp */; };
-		5662251B2B14D09F00D3C15F /* light.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566225002B14CF9700D3C15F /* light.frag */; };
-		5662251C2B14D09F00D3C15F /* light.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566224FD2B14CF9700D3C15F /* light.vert */; };
-		5662251D2B14D09F00D3C15F /* phong.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566225012B14CF9700D3C15F /* phong.frag */; };
-		5662251E2B14D09F00D3C15F /* phong.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566224FB2B14CF9600D3C15F /* phong.vert */; };
-		5662251F2B14D09F00D3C15F /* simpleTex.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566224FE2B14CF9700D3C15F /* simpleTex.frag */; };
-		566225202B14D09F00D3C15F /* simpleTex.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566224FF2B14CF9700D3C15F /* simpleTex.vert */; };
-		566225212B14D0BE00D3C15F /* Stones_Diffuse.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566225032B14CF9700D3C15F /* Stones_Diffuse.png */; };
-		566225222B14D0BE00D3C15F /* Stones_Normals.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566224FA2B14CF9600D3C15F /* Stones_Normals.png */; };
-		566225232B14D0BE00D3C15F /* Stones_Specular.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 566224FC2B14CF9600D3C15F /* Stones_Specular.png */; };
+		5638CB732F34D8D700A27C6F /* light.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB692F34D8C300A27C6F /* light.frag */; };
+		5638CB742F34D8D900A27C6F /* light.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB6A2F34D8C300A27C6F /* light.vert */; };
+		5638CB752F34D8DB00A27C6F /* phong.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB6B2F34D8C300A27C6F /* phong.frag */; };
+		5638CB762F34D8DF00A27C6F /* phong.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB6C2F34D8C300A27C6F /* phong.vert */; };
+		5638CB772F34D8E200A27C6F /* simpleTex.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB6D2F34D8C300A27C6F /* simpleTex.frag */; };
+		5638CB782F34D8E600A27C6F /* simpleTex.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB6E2F34D8C300A27C6F /* simpleTex.vert */; };
+		5638CB792F34D8E900A27C6F /* Stones_Diffuse.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB6F2F34D8C300A27C6F /* Stones_Diffuse.png */; };
+		5638CB7A2F34D8ED00A27C6F /* Stones_Normals.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB702F34D8C300A27C6F /* Stones_Normals.png */; };
+		5638CB7B2F34D8F100A27C6F /* Stones_Specular.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB712F34D8C300A27C6F /* Stones_Specular.png */; };
+		5638CB7C2F34D8F100A27C6F /* teapot_normals.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB722F34D8C300A27C6F /* teapot_normals.png */; };
 		5677395325FB7BF000AB2341 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5677394C25FB7BF000AB2341 /* main.cpp */; };
 		56C3086B2ADFE5FC001E10D2 /* AbstractParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56C308282ADFE53F001E10D2 /* AbstractParticleSystem.cpp */; };
 		56C3086C2ADFE5FC001E10D2 /* AbstractParticleSystem.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C3082F2ADFE53F001E10D2 /* AbstractParticleSystem.h */; };
@@ -99,37 +99,37 @@
 		A231F0FD25EAF61A00CBFC23 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
-			dstPath = res;
+			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				566225212B14D0BE00D3C15F /* Stones_Diffuse.png in CopyFiles */,
-				566225222B14D0BE00D3C15F /* Stones_Normals.png in CopyFiles */,
-				566225232B14D0BE00D3C15F /* Stones_Specular.png in CopyFiles */,
-				5638CB082F348D8300A27C6F /* teapot_normals.png in CopyFiles */,
-				5662251B2B14D09F00D3C15F /* light.frag in CopyFiles */,
-				5662251C2B14D09F00D3C15F /* light.vert in CopyFiles */,
-				5662251D2B14D09F00D3C15F /* phong.frag in CopyFiles */,
-				5662251E2B14D09F00D3C15F /* phong.vert in CopyFiles */,
-				5662251F2B14D09F00D3C15F /* simpleTex.frag in CopyFiles */,
-				566225202B14D09F00D3C15F /* simpleTex.vert in CopyFiles */,
+				5638CB7B2F34D8F100A27C6F /* Stones_Specular.png in CopyFiles */,
+				5638CB7C2F34D8F100A27C6F /* teapot_normals.png in CopyFiles */,
+				5638CB762F34D8DF00A27C6F /* phong.vert in CopyFiles */,
+				5638CB732F34D8D700A27C6F /* light.frag in CopyFiles */,
+				5638CB742F34D8D900A27C6F /* light.vert in CopyFiles */,
+				5638CB752F34D8DB00A27C6F /* phong.frag in CopyFiles */,
+				5638CB772F34D8E200A27C6F /* simpleTex.frag in CopyFiles */,
+				5638CB782F34D8E600A27C6F /* simpleTex.vert in CopyFiles */,
+				5638CB792F34D8E900A27C6F /* Stones_Diffuse.png in CopyFiles */,
+				5638CB7A2F34D8ED00A27C6F /* Stones_Normals.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5638CB072F348D7C00A27C6F /* teapot_normals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = teapot_normals.png; path = res/teapot_normals.png; sourceTree = "<group>"; };
 		5638CB3B2F348F5500A27C6F /* CommandInterpreter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandInterpreter.h; path = ../Utils/CommandInterpreter.h; sourceTree = SOURCE_ROOT; };
 		5638CB3C2F348F5500A27C6F /* CommandInterpreter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandInterpreter.cpp; path = ../Utils/CommandInterpreter.cpp; sourceTree = SOURCE_ROOT; };
-		566224FA2B14CF9600D3C15F /* Stones_Normals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stones_Normals.png; path = res/Stones_Normals.png; sourceTree = "<group>"; };
-		566224FB2B14CF9600D3C15F /* phong.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phong.vert; path = res/phong.vert; sourceTree = "<group>"; };
-		566224FC2B14CF9600D3C15F /* Stones_Specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stones_Specular.png; path = res/Stones_Specular.png; sourceTree = "<group>"; };
-		566224FD2B14CF9700D3C15F /* light.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = light.vert; path = res/light.vert; sourceTree = "<group>"; };
-		566224FE2B14CF9700D3C15F /* simpleTex.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = simpleTex.frag; path = res/simpleTex.frag; sourceTree = "<group>"; };
-		566224FF2B14CF9700D3C15F /* simpleTex.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = simpleTex.vert; path = res/simpleTex.vert; sourceTree = "<group>"; };
-		566225002B14CF9700D3C15F /* light.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = light.frag; path = res/light.frag; sourceTree = "<group>"; };
-		566225012B14CF9700D3C15F /* phong.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phong.frag; path = res/phong.frag; sourceTree = "<group>"; };
-		566225032B14CF9700D3C15F /* Stones_Diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stones_Diffuse.png; path = res/Stones_Diffuse.png; sourceTree = "<group>"; };
+		5638CB692F34D8C300A27C6F /* light.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = light.frag; path = res/light.frag; sourceTree = "<group>"; };
+		5638CB6A2F34D8C300A27C6F /* light.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = light.vert; path = res/light.vert; sourceTree = "<group>"; };
+		5638CB6B2F34D8C300A27C6F /* phong.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phong.frag; path = res/phong.frag; sourceTree = "<group>"; };
+		5638CB6C2F34D8C300A27C6F /* phong.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phong.vert; path = res/phong.vert; sourceTree = "<group>"; };
+		5638CB6D2F34D8C300A27C6F /* simpleTex.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = simpleTex.frag; path = res/simpleTex.frag; sourceTree = "<group>"; };
+		5638CB6E2F34D8C300A27C6F /* simpleTex.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = simpleTex.vert; path = res/simpleTex.vert; sourceTree = "<group>"; };
+		5638CB6F2F34D8C300A27C6F /* Stones_Diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stones_Diffuse.png; path = res/Stones_Diffuse.png; sourceTree = "<group>"; };
+		5638CB702F34D8C300A27C6F /* Stones_Normals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stones_Normals.png; path = res/Stones_Normals.png; sourceTree = "<group>"; };
+		5638CB712F34D8C300A27C6F /* Stones_Specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stones_Specular.png; path = res/Stones_Specular.png; sourceTree = "<group>"; };
+		5638CB722F34D8C300A27C6F /* teapot_normals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = teapot_normals.png; path = res/teapot_normals.png; sourceTree = "<group>"; };
 		566225042B14CFB900D3C15F /* Teapot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teapot.h; sourceTree = "<group>"; };
 		566225052B14CFB900D3C15F /* UnitCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitCube.h; sourceTree = "<group>"; };
 		566225062B14CFB900D3C15F /* UnitPlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitPlane.h; sourceTree = "<group>"; };
@@ -267,19 +267,19 @@
 			isa = PBXGroup;
 			children = (
 				5677394C25FB7BF000AB2341 /* main.cpp */,
-				566225002B14CF9700D3C15F /* light.frag */,
-				566224FD2B14CF9700D3C15F /* light.vert */,
-				566225012B14CF9700D3C15F /* phong.frag */,
-				566224FB2B14CF9600D3C15F /* phong.vert */,
-				566224FE2B14CF9700D3C15F /* simpleTex.frag */,
-				566224FF2B14CF9700D3C15F /* simpleTex.vert */,
 				566225042B14CFB900D3C15F /* Teapot.h */,
 				566225052B14CFB900D3C15F /* UnitCube.h */,
 				566225062B14CFB900D3C15F /* UnitPlane.h */,
-				566225032B14CF9700D3C15F /* Stones_Diffuse.png */,
-				566224FA2B14CF9600D3C15F /* Stones_Normals.png */,
-				566224FC2B14CF9600D3C15F /* Stones_Specular.png */,
-				5638CB072F348D7C00A27C6F /* teapot_normals.png */,
+				5638CB692F34D8C300A27C6F /* light.frag */,
+				5638CB6A2F34D8C300A27C6F /* light.vert */,
+				5638CB6B2F34D8C300A27C6F /* phong.frag */,
+				5638CB6C2F34D8C300A27C6F /* phong.vert */,
+				5638CB6D2F34D8C300A27C6F /* simpleTex.frag */,
+				5638CB6E2F34D8C300A27C6F /* simpleTex.vert */,
+				5638CB6F2F34D8C300A27C6F /* Stones_Diffuse.png */,
+				5638CB702F34D8C300A27C6F /* Stones_Normals.png */,
+				5638CB712F34D8C300A27C6F /* Stones_Specular.png */,
+				5638CB722F34D8C300A27C6F /* teapot_normals.png */,
 				56C308262ADFE439001E10D2 /* Utils */,
 				A231F10025EAF61A00CBFC23 /* Products */,
 			);

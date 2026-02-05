@@ -62,9 +62,9 @@ class MyGLApp : public GLApp {
 
   MyGLApp() :
   GLApp(800,600,1,"Assignment 05 - Hello Shadows"),
-  pPhongBump{GLProgram::createFromFile("res/phongBump.vert","res/phongBump.frag","",false,true)},
-  pPhongBumpTex{GLProgram::createFromFile("res/phongBump.vert","res/phongBumpTex.frag","",false,true)},
-  pLight{GLProgram::createFromFile("res/light.vert","res/light.frag","",false,true)}
+  pPhongBump{GLProgram::createFromFile("phongBump.vert","phongBump.frag","",false,true)},
+  pPhongBumpTex{GLProgram::createFromFile("phongBump.vert","phongBumpTex.frag","",false,true)},
+  pLight{GLProgram::createFromFile("light.vert","light.frag","",false,true)}
   {}
 
   virtual void init() override {
@@ -78,16 +78,16 @@ class MyGLApp : public GLApp {
   }
 
   void setupTextures() {
-    Image image = ImageLoader::load("res/Stones_Diffuse.png");
+    Image image = ImageLoader::load("Stones_Diffuse.png");
     stonesDiffuse.setData(image.data,image.width, image.height, image.componentCount);
 
-    image = ImageLoader::load("res/Stones_Specular.png");
+    image = ImageLoader::load("Stones_Specular.png");
     stonesSpecular.setData(image.data,image.width, image.height, image.componentCount);
 
-    image = ImageLoader::load("res/Stones_Normals.png");
+    image = ImageLoader::load("Stones_Normals.png");
     stonesNormals.setData(image.data,image.width, image.height, image.componentCount);
 
-    image = ImageLoader::load("res/teapot_Normals.png");
+    image = ImageLoader::load("teapot_normals.png");
     udeNormals.setData(image.data,image.width, image.height, image.componentCount);
   }
 

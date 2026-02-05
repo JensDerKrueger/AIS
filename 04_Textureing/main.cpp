@@ -54,9 +54,9 @@ public:
 
   MyGLApp() :
     GLApp(800,600,1,"Assignment 04 - Hello Textureing"),
-    pPhong{GLProgram::createFromFile("res/phong.vert","res/phong.frag")},
-    pLight{GLProgram::createFromFile("res/light.vert","res/light.frag")},
-    pSimpleTex{GLProgram::createFromFile("res/simpleTex.vert","res/simpleTex.frag")}
+    pPhong{GLProgram::createFromFile("phong.vert","phong.frag")},
+    pLight{GLProgram::createFromFile("light.vert","light.frag")},
+    pSimpleTex{GLProgram::createFromFile("simpleTex.vert","simpleTex.frag")}
   {}
 
   virtual void init() override {
@@ -69,7 +69,7 @@ public:
   }
 
   void setupTextures() {
-    const Image image = ImageLoader::load("res/Stones_Diffuse.png");
+    const Image image = ImageLoader::load("Stones_Diffuse.png");
     stonesDiffuse.setData(image.data,image.width, image.height, image.componentCount);
   }
 
