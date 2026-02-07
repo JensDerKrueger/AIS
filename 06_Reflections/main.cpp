@@ -87,9 +87,9 @@ class MyGLApp : public GLApp {
 
   MyGLApp() :
   GLApp(800,600,1,"Exercise 06 - Hello Sky"),
-  pPhongBump{GLProgram::createFromFile("res/phongBump.vert","res/phongBump.frag","",false,true)},
-  pPhongBumpTex{GLProgram::createFromFile("res/phongBump.vert","res/phongBumpTex.frag","",false,true)},
-  pLight{GLProgram::createFromFile("res/light.vert","res/light.frag","",false,true)},
+  pPhongBump{GLProgram::createFromFile("phongBump.vert","phongBump.frag","",false,true)},
+  pPhongBumpTex{GLProgram::createFromFile("phongBump.vert","phongBumpTex.frag","",false,true)},
+  pLight{GLProgram::createFromFile("light.vert","light.frag","",false,true)},
   shadowProgram{GLProgram::createFromString(shadowVertexShader,shadowFragmentShader,"",false,true)}
   {
     shadowMap.setEmpty(2048,2048);
@@ -107,16 +107,16 @@ class MyGLApp : public GLApp {
   }
 
   void setupTextures() {
-    Image image = ImageLoader::load("res/Stones_Diffuse.png");
+    Image image = ImageLoader::load("Stones_Diffuse.png");
     stonesDiffuse.setData(image.data,image.width, image.height, image.componentCount);
 
-    image = ImageLoader::load("res/Stones_Specular.png");
+    image = ImageLoader::load("Stones_Specular.png");
     stonesSpecular.setData(image.data,image.width, image.height, image.componentCount);
 
-    image = ImageLoader::load("res/Stones_Normals.png");
+    image = ImageLoader::load("Stones_Normals.png");
     stonesNormals.setData(image.data,image.width, image.height, image.componentCount);
 
-    image = ImageLoader::load("res/teapot_normals.png");
+    image = ImageLoader::load("teapot_normals.png");
     udeNormals.setData(image.data,image.width, image.height, image.componentCount);
   }
 
@@ -347,11 +347,35 @@ class MyGLApp : public GLApp {
     viewPosition[0] -= float(x_offset) * f;
     viewPosition[2] -= float(y_offset) * f;
   }
-};
+} myApp;
 
+#ifdef _WIN32
+#include <Windows.h>
+
+INT WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, INT nCmdShow) {
+  std::vector<std::string> args = getArgsWindows();
+#else
 int main(int argc, char** argv) {
-  MyGLApp myApp;
-  myApp.run();
+  std::vector<std::string> args{ argv + 1, argv + argc };
+#endif
+  try {
+    myApp.run();
+  }
+  catch (const GLException& e) {
+    std::stringstream ss;
+    ss << "Insufficient OpenGL Support " << e.what();
+#ifndef _WIN32
+    std::cerr << ss.str().c_str() << std::endl;
+#else
+    MessageBoxA(
+      NULL,
+      ss.str().c_str(),
+      "OpenGL Error",
+      MB_ICONERROR | MB_OK
+    );
+#endif
+    return EXIT_FAILURE;
+  }
   return EXIT_SUCCESS;
 }
 
