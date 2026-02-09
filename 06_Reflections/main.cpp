@@ -189,7 +189,7 @@ class MyGLApp : public GLApp {
       pPhongBump.setUniform("MVP", modelViewProjection);
       pPhongBump.setUniform("MV", modelView);
       pPhongBump.setUniform("M", modelMatrix);
-      pPhongBumpTex.setUniform("worldToShadow", worldToShadowMatrix);
+      pPhongBump.setUniform("worldToShadow", worldToShadowMatrix);
       pPhongBump.setUniform("MVit", modelViewIT);
       pPhongBump.setUniform("lightPosition", lightPosition);
       pPhongBump.setTexture("tn", udeNormals,0);
