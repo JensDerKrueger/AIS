@@ -76,8 +76,8 @@ public:
   }
   
   void setupShaders() {
-    const std::string vertexSrcPath = "res/shaders/vertexShader.vert";
-    const std::string fragmentSrcPath = "res/shaders/fragmentShader.frag";
+    const std::string vertexSrcPath = "vertexShader.vert";
+    const std::string fragmentSrcPath = "fragmentShader.frag";
     GLuint vertexShader = createShaderFromFile(GL_VERTEX_SHADER, vertexSrcPath);
     GLuint fragmentShader = createShaderFromFile(GL_FRAGMENT_SHADER, fragmentSrcPath);
     
