@@ -105,7 +105,7 @@ class MyGLApp : public GLApp {
 
     pLight.enable();
 
-    const Mat4 lightModelMatrix = Mat4::rotationY(-light.angle) *  Mat4::translation(-35, 35, 35);
+    const Mat4 lightModelMatrix = Mat4::rotationY(light.angle) *  Mat4::translation(-35, 35, 35);
     const Vec4 lightPosition =  viewMatrix * lightModelMatrix * Vec4(0, 0, 0, 1);
 
     pLight.setUniform("MVP", projectionMatrix * viewMatrix * lightModelMatrix);
