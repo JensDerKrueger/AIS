@@ -9,14 +9,6 @@
 /* Begin PBXBuildFile section */
 		5638CB412F34926A00A27C6F /* CommandInterpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5638CB402F34926A00A27C6F /* CommandInterpreter.cpp */; };
 		5638CB422F34926A00A27C6F /* CommandInterpreter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5638CB3F2F34926A00A27C6F /* CommandInterpreter.h */; };
-		5638CB612F34D10900A27C6F /* flat.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB572F34D0E700A27C6F /* flat.frag */; };
-		5638CB622F34D14600A27C6F /* flat.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB582F34D0E700A27C6F /* flat.vert */; };
-		5638CB632F34D14900A27C6F /* gouraud.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB592F34D0E700A27C6F /* gouraud.frag */; };
-		5638CB642F34D14C00A27C6F /* gouraud.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB5A2F34D0E700A27C6F /* gouraud.vert */; };
-		5638CB652F34D15000A27C6F /* light.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB5B2F34D0E700A27C6F /* light.frag */; };
-		5638CB662F34D15200A27C6F /* light.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB5C2F34D0E700A27C6F /* light.vert */; };
-		5638CB672F34D15600A27C6F /* phong.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB5D2F34D0E700A27C6F /* phong.frag */; };
-		5638CB682F34D15900A27C6F /* phong.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB5E2F34D0E700A27C6F /* phong.vert */; };
 		5677395325FB7BF000AB2341 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5677394C25FB7BF000AB2341 /* main.cpp */; };
 		56C3086B2ADFE5FC001E10D2 /* AbstractParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56C308282ADFE53F001E10D2 /* AbstractParticleSystem.cpp */; };
 		56C3086C2ADFE5FC001E10D2 /* AbstractParticleSystem.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C3082F2ADFE53F001E10D2 /* AbstractParticleSystem.h */; };
@@ -67,6 +59,14 @@
 		56C3089A2ADFE5FC001E10D2 /* Vec2.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C3085F2ADFE562001E10D2 /* Vec2.h */; };
 		56C3089B2ADFE5FC001E10D2 /* Vec3.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C3085A2ADFE562001E10D2 /* Vec3.h */; };
 		56C3089C2ADFE5FC001E10D2 /* Vec4.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C3085B2ADFE562001E10D2 /* Vec4.h */; };
+		56F619462F3A9B8000FAD236 /* flat.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F6193E2F3A9B6500FAD236 /* flat.frag */; };
+		56F619472F3A9B8000FAD236 /* flat.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F6193F2F3A9B6500FAD236 /* flat.vert */; };
+		56F619482F3A9B8000FAD236 /* gouraud.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F619402F3A9B6500FAD236 /* gouraud.frag */; };
+		56F619492F3A9B8000FAD236 /* gouraud.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F619412F3A9B6500FAD236 /* gouraud.vert */; };
+		56F6194A2F3A9B8000FAD236 /* light.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F619422F3A9B6500FAD236 /* light.frag */; };
+		56F6194B2F3A9B8000FAD236 /* light.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F619432F3A9B6500FAD236 /* light.vert */; };
+		56F6194C2F3A9B8000FAD236 /* phong.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F619442F3A9B6500FAD236 /* phong.frag */; };
+		56F6194D2F3A9B8000FAD236 /* phong.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F619452F3A9B6500FAD236 /* phong.vert */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -100,14 +100,14 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				5638CB672F34D15600A27C6F /* phong.frag in CopyFiles */,
-				5638CB612F34D10900A27C6F /* flat.frag in CopyFiles */,
-				5638CB622F34D14600A27C6F /* flat.vert in CopyFiles */,
-				5638CB632F34D14900A27C6F /* gouraud.frag in CopyFiles */,
-				5638CB642F34D14C00A27C6F /* gouraud.vert in CopyFiles */,
-				5638CB652F34D15000A27C6F /* light.frag in CopyFiles */,
-				5638CB682F34D15900A27C6F /* phong.vert in CopyFiles */,
-				5638CB662F34D15200A27C6F /* light.vert in CopyFiles */,
+				56F619462F3A9B8000FAD236 /* flat.frag in CopyFiles */,
+				56F619472F3A9B8000FAD236 /* flat.vert in CopyFiles */,
+				56F619482F3A9B8000FAD236 /* gouraud.frag in CopyFiles */,
+				56F619492F3A9B8000FAD236 /* gouraud.vert in CopyFiles */,
+				56F6194A2F3A9B8000FAD236 /* light.frag in CopyFiles */,
+				56F6194B2F3A9B8000FAD236 /* light.vert in CopyFiles */,
+				56F6194C2F3A9B8000FAD236 /* phong.frag in CopyFiles */,
+				56F6194D2F3A9B8000FAD236 /* phong.vert in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,14 +116,6 @@
 /* Begin PBXFileReference section */
 		5638CB3F2F34926A00A27C6F /* CommandInterpreter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandInterpreter.h; path = ../Utils/CommandInterpreter.h; sourceTree = SOURCE_ROOT; };
 		5638CB402F34926A00A27C6F /* CommandInterpreter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandInterpreter.cpp; path = ../Utils/CommandInterpreter.cpp; sourceTree = SOURCE_ROOT; };
-		5638CB572F34D0E700A27C6F /* flat.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = flat.frag; path = res/shaders/flat.frag; sourceTree = "<group>"; };
-		5638CB582F34D0E700A27C6F /* flat.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = flat.vert; path = res/shaders/flat.vert; sourceTree = "<group>"; };
-		5638CB592F34D0E700A27C6F /* gouraud.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = gouraud.frag; path = res/shaders/gouraud.frag; sourceTree = "<group>"; };
-		5638CB5A2F34D0E700A27C6F /* gouraud.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = gouraud.vert; path = res/shaders/gouraud.vert; sourceTree = "<group>"; };
-		5638CB5B2F34D0E700A27C6F /* light.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = light.frag; path = res/shaders/light.frag; sourceTree = "<group>"; };
-		5638CB5C2F34D0E700A27C6F /* light.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = light.vert; path = res/shaders/light.vert; sourceTree = "<group>"; };
-		5638CB5D2F34D0E700A27C6F /* phong.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phong.frag; path = res/shaders/phong.frag; sourceTree = "<group>"; };
-		5638CB5E2F34D0E700A27C6F /* phong.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phong.vert; path = res/shaders/phong.vert; sourceTree = "<group>"; };
 		5677394C25FB7BF000AB2341 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		56C308272ADFE53F001E10D2 /* GLEnv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLEnv.h; path = ../Utils/GLEnv.h; sourceTree = "<group>"; };
 		56C308282ADFE53F001E10D2 /* AbstractParticleSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AbstractParticleSystem.cpp; path = ../Utils/AbstractParticleSystem.cpp; sourceTree = "<group>"; };
@@ -175,6 +167,14 @@
 		56C308612ADFE562001E10D2 /* Mat4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Mat4.h; path = ../Utils/Mat4.h; sourceTree = "<group>"; };
 		56C308622ADFE562001E10D2 /* GLTextureCube.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GLTextureCube.cpp; path = ../Utils/GLTextureCube.cpp; sourceTree = "<group>"; };
 		56C308672ADFE5EE001E10D2 /* libUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		56F6193E2F3A9B6500FAD236 /* flat.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = flat.frag; path = Shader/flat.frag; sourceTree = "<group>"; };
+		56F6193F2F3A9B6500FAD236 /* flat.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = flat.vert; path = Shader/flat.vert; sourceTree = "<group>"; };
+		56F619402F3A9B6500FAD236 /* gouraud.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = gouraud.frag; path = Shader/gouraud.frag; sourceTree = "<group>"; };
+		56F619412F3A9B6500FAD236 /* gouraud.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = gouraud.vert; path = Shader/gouraud.vert; sourceTree = "<group>"; };
+		56F619422F3A9B6500FAD236 /* light.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = light.frag; path = Shader/light.frag; sourceTree = "<group>"; };
+		56F619432F3A9B6500FAD236 /* light.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = light.vert; path = Shader/light.vert; sourceTree = "<group>"; };
+		56F619442F3A9B6500FAD236 /* phong.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phong.frag; path = Shader/phong.frag; sourceTree = "<group>"; };
+		56F619452F3A9B6500FAD236 /* phong.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phong.vert; path = Shader/phong.vert; sourceTree = "<group>"; };
 		A231F0FF25EAF61A00CBFC23 /* HelloShading */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HelloShading; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -258,14 +258,14 @@
 			isa = PBXGroup;
 			children = (
 				5677394C25FB7BF000AB2341 /* main.cpp */,
-				5638CB572F34D0E700A27C6F /* flat.frag */,
-				5638CB582F34D0E700A27C6F /* flat.vert */,
-				5638CB592F34D0E700A27C6F /* gouraud.frag */,
-				5638CB5A2F34D0E700A27C6F /* gouraud.vert */,
-				5638CB5B2F34D0E700A27C6F /* light.frag */,
-				5638CB5C2F34D0E700A27C6F /* light.vert */,
-				5638CB5D2F34D0E700A27C6F /* phong.frag */,
-				5638CB5E2F34D0E700A27C6F /* phong.vert */,
+				56F6193E2F3A9B6500FAD236 /* flat.frag */,
+				56F6193F2F3A9B6500FAD236 /* flat.vert */,
+				56F619402F3A9B6500FAD236 /* gouraud.frag */,
+				56F619412F3A9B6500FAD236 /* gouraud.vert */,
+				56F619422F3A9B6500FAD236 /* light.frag */,
+				56F619432F3A9B6500FAD236 /* light.vert */,
+				56F619442F3A9B6500FAD236 /* phong.frag */,
+				56F619452F3A9B6500FAD236 /* phong.vert */,
 				56C308262ADFE439001E10D2 /* Utils */,
 				A231F10025EAF61A00CBFC23 /* Products */,
 			);

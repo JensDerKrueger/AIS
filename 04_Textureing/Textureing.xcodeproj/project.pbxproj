@@ -9,16 +9,6 @@
 /* Begin PBXBuildFile section */
 		5638CB3D2F348F5500A27C6F /* CommandInterpreter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5638CB3B2F348F5500A27C6F /* CommandInterpreter.h */; };
 		5638CB3E2F348F5500A27C6F /* CommandInterpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5638CB3C2F348F5500A27C6F /* CommandInterpreter.cpp */; };
-		5638CB732F34D8D700A27C6F /* light.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB692F34D8C300A27C6F /* light.frag */; };
-		5638CB742F34D8D900A27C6F /* light.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB6A2F34D8C300A27C6F /* light.vert */; };
-		5638CB752F34D8DB00A27C6F /* phong.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB6B2F34D8C300A27C6F /* phong.frag */; };
-		5638CB762F34D8DF00A27C6F /* phong.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB6C2F34D8C300A27C6F /* phong.vert */; };
-		5638CB772F34D8E200A27C6F /* simpleTex.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB6D2F34D8C300A27C6F /* simpleTex.frag */; };
-		5638CB782F34D8E600A27C6F /* simpleTex.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB6E2F34D8C300A27C6F /* simpleTex.vert */; };
-		5638CB792F34D8E900A27C6F /* Stones_Diffuse.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB6F2F34D8C300A27C6F /* Stones_Diffuse.png */; };
-		5638CB7A2F34D8ED00A27C6F /* Stones_Normals.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB702F34D8C300A27C6F /* Stones_Normals.png */; };
-		5638CB7B2F34D8F100A27C6F /* Stones_Specular.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB712F34D8C300A27C6F /* Stones_Specular.png */; };
-		5638CB7C2F34D8F100A27C6F /* teapot_normals.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5638CB722F34D8C300A27C6F /* teapot_normals.png */; };
 		5677395325FB7BF000AB2341 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5677394C25FB7BF000AB2341 /* main.cpp */; };
 		56C3086B2ADFE5FC001E10D2 /* AbstractParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 56C308282ADFE53F001E10D2 /* AbstractParticleSystem.cpp */; };
 		56C3086C2ADFE5FC001E10D2 /* AbstractParticleSystem.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C3082F2ADFE53F001E10D2 /* AbstractParticleSystem.h */; };
@@ -69,6 +59,16 @@
 		56C3089A2ADFE5FC001E10D2 /* Vec2.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C3085F2ADFE562001E10D2 /* Vec2.h */; };
 		56C3089B2ADFE5FC001E10D2 /* Vec3.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C3085A2ADFE562001E10D2 /* Vec3.h */; };
 		56C3089C2ADFE5FC001E10D2 /* Vec4.h in Sources */ = {isa = PBXBuildFile; fileRef = 56C3085B2ADFE562001E10D2 /* Vec4.h */; };
+		56F619582F3A9D2700FAD236 /* light.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F6194E2F3A9D0A00FAD236 /* light.frag */; };
+		56F619592F3A9D2700FAD236 /* light.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F6194F2F3A9D0A00FAD236 /* light.vert */; };
+		56F6195A2F3A9D2700FAD236 /* phong.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F619502F3A9D0A00FAD236 /* phong.frag */; };
+		56F6195B2F3A9D2700FAD236 /* phong.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F619512F3A9D0A00FAD236 /* phong.vert */; };
+		56F6195C2F3A9D2700FAD236 /* simpleTex.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F619522F3A9D0A00FAD236 /* simpleTex.frag */; };
+		56F6195D2F3A9D2700FAD236 /* simpleTex.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F619532F3A9D0A00FAD236 /* simpleTex.vert */; };
+		56F6195E2F3A9D2700FAD236 /* Stones_Diffuse.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F619542F3A9D1700FAD236 /* Stones_Diffuse.png */; };
+		56F6195F2F3A9D2700FAD236 /* Stones_Normals.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F619552F3A9D1700FAD236 /* Stones_Normals.png */; };
+		56F619602F3A9D2700FAD236 /* Stones_Specular.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F619562F3A9D1700FAD236 /* Stones_Specular.png */; };
+		56F619612F3A9D2700FAD236 /* teapot_normals.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F619572F3A9D1700FAD236 /* teapot_normals.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -102,16 +102,16 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				5638CB7B2F34D8F100A27C6F /* Stones_Specular.png in CopyFiles */,
-				5638CB7C2F34D8F100A27C6F /* teapot_normals.png in CopyFiles */,
-				5638CB762F34D8DF00A27C6F /* phong.vert in CopyFiles */,
-				5638CB732F34D8D700A27C6F /* light.frag in CopyFiles */,
-				5638CB742F34D8D900A27C6F /* light.vert in CopyFiles */,
-				5638CB752F34D8DB00A27C6F /* phong.frag in CopyFiles */,
-				5638CB772F34D8E200A27C6F /* simpleTex.frag in CopyFiles */,
-				5638CB782F34D8E600A27C6F /* simpleTex.vert in CopyFiles */,
-				5638CB792F34D8E900A27C6F /* Stones_Diffuse.png in CopyFiles */,
-				5638CB7A2F34D8ED00A27C6F /* Stones_Normals.png in CopyFiles */,
+				56F619582F3A9D2700FAD236 /* light.frag in CopyFiles */,
+				56F619592F3A9D2700FAD236 /* light.vert in CopyFiles */,
+				56F6195A2F3A9D2700FAD236 /* phong.frag in CopyFiles */,
+				56F6195B2F3A9D2700FAD236 /* phong.vert in CopyFiles */,
+				56F6195C2F3A9D2700FAD236 /* simpleTex.frag in CopyFiles */,
+				56F6195D2F3A9D2700FAD236 /* simpleTex.vert in CopyFiles */,
+				56F6195E2F3A9D2700FAD236 /* Stones_Diffuse.png in CopyFiles */,
+				56F6195F2F3A9D2700FAD236 /* Stones_Normals.png in CopyFiles */,
+				56F619602F3A9D2700FAD236 /* Stones_Specular.png in CopyFiles */,
+				56F619612F3A9D2700FAD236 /* teapot_normals.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,16 +120,6 @@
 /* Begin PBXFileReference section */
 		5638CB3B2F348F5500A27C6F /* CommandInterpreter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandInterpreter.h; path = ../Utils/CommandInterpreter.h; sourceTree = SOURCE_ROOT; };
 		5638CB3C2F348F5500A27C6F /* CommandInterpreter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandInterpreter.cpp; path = ../Utils/CommandInterpreter.cpp; sourceTree = SOURCE_ROOT; };
-		5638CB692F34D8C300A27C6F /* light.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = light.frag; path = res/light.frag; sourceTree = "<group>"; };
-		5638CB6A2F34D8C300A27C6F /* light.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = light.vert; path = res/light.vert; sourceTree = "<group>"; };
-		5638CB6B2F34D8C300A27C6F /* phong.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phong.frag; path = res/phong.frag; sourceTree = "<group>"; };
-		5638CB6C2F34D8C300A27C6F /* phong.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phong.vert; path = res/phong.vert; sourceTree = "<group>"; };
-		5638CB6D2F34D8C300A27C6F /* simpleTex.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = simpleTex.frag; path = res/simpleTex.frag; sourceTree = "<group>"; };
-		5638CB6E2F34D8C300A27C6F /* simpleTex.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = simpleTex.vert; path = res/simpleTex.vert; sourceTree = "<group>"; };
-		5638CB6F2F34D8C300A27C6F /* Stones_Diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stones_Diffuse.png; path = res/Stones_Diffuse.png; sourceTree = "<group>"; };
-		5638CB702F34D8C300A27C6F /* Stones_Normals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stones_Normals.png; path = res/Stones_Normals.png; sourceTree = "<group>"; };
-		5638CB712F34D8C300A27C6F /* Stones_Specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stones_Specular.png; path = res/Stones_Specular.png; sourceTree = "<group>"; };
-		5638CB722F34D8C300A27C6F /* teapot_normals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = teapot_normals.png; path = res/teapot_normals.png; sourceTree = "<group>"; };
 		566225042B14CFB900D3C15F /* Teapot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teapot.h; sourceTree = "<group>"; };
 		566225052B14CFB900D3C15F /* UnitCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitCube.h; sourceTree = "<group>"; };
 		566225062B14CFB900D3C15F /* UnitPlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitPlane.h; sourceTree = "<group>"; };
@@ -184,6 +174,16 @@
 		56C308612ADFE562001E10D2 /* Mat4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Mat4.h; path = ../Utils/Mat4.h; sourceTree = "<group>"; };
 		56C308622ADFE562001E10D2 /* GLTextureCube.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GLTextureCube.cpp; path = ../Utils/GLTextureCube.cpp; sourceTree = "<group>"; };
 		56C308672ADFE5EE001E10D2 /* libUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		56F6194E2F3A9D0A00FAD236 /* light.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = light.frag; path = Shader/light.frag; sourceTree = "<group>"; };
+		56F6194F2F3A9D0A00FAD236 /* light.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = light.vert; path = Shader/light.vert; sourceTree = "<group>"; };
+		56F619502F3A9D0A00FAD236 /* phong.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phong.frag; path = Shader/phong.frag; sourceTree = "<group>"; };
+		56F619512F3A9D0A00FAD236 /* phong.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = phong.vert; path = Shader/phong.vert; sourceTree = "<group>"; };
+		56F619522F3A9D0A00FAD236 /* simpleTex.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = simpleTex.frag; path = Shader/simpleTex.frag; sourceTree = "<group>"; };
+		56F619532F3A9D0A00FAD236 /* simpleTex.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = simpleTex.vert; path = Shader/simpleTex.vert; sourceTree = "<group>"; };
+		56F619542F3A9D1700FAD236 /* Stones_Diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stones_Diffuse.png; path = Datasets/Stones_Diffuse.png; sourceTree = "<group>"; };
+		56F619552F3A9D1700FAD236 /* Stones_Normals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stones_Normals.png; path = Datasets/Stones_Normals.png; sourceTree = "<group>"; };
+		56F619562F3A9D1700FAD236 /* Stones_Specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stones_Specular.png; path = Datasets/Stones_Specular.png; sourceTree = "<group>"; };
+		56F619572F3A9D1700FAD236 /* teapot_normals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = teapot_normals.png; path = Datasets/teapot_normals.png; sourceTree = "<group>"; };
 		A231F0FF25EAF61A00CBFC23 /* Texture-Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Texture-Demo"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -270,16 +270,16 @@
 				566225042B14CFB900D3C15F /* Teapot.h */,
 				566225052B14CFB900D3C15F /* UnitCube.h */,
 				566225062B14CFB900D3C15F /* UnitPlane.h */,
-				5638CB692F34D8C300A27C6F /* light.frag */,
-				5638CB6A2F34D8C300A27C6F /* light.vert */,
-				5638CB6B2F34D8C300A27C6F /* phong.frag */,
-				5638CB6C2F34D8C300A27C6F /* phong.vert */,
-				5638CB6D2F34D8C300A27C6F /* simpleTex.frag */,
-				5638CB6E2F34D8C300A27C6F /* simpleTex.vert */,
-				5638CB6F2F34D8C300A27C6F /* Stones_Diffuse.png */,
-				5638CB702F34D8C300A27C6F /* Stones_Normals.png */,
-				5638CB712F34D8C300A27C6F /* Stones_Specular.png */,
-				5638CB722F34D8C300A27C6F /* teapot_normals.png */,
+				56F6194E2F3A9D0A00FAD236 /* light.frag */,
+				56F6194F2F3A9D0A00FAD236 /* light.vert */,
+				56F619502F3A9D0A00FAD236 /* phong.frag */,
+				56F619512F3A9D0A00FAD236 /* phong.vert */,
+				56F619522F3A9D0A00FAD236 /* simpleTex.frag */,
+				56F619532F3A9D0A00FAD236 /* simpleTex.vert */,
+				56F619542F3A9D1700FAD236 /* Stones_Diffuse.png */,
+				56F619552F3A9D1700FAD236 /* Stones_Normals.png */,
+				56F619562F3A9D1700FAD236 /* Stones_Specular.png */,
+				56F619572F3A9D1700FAD236 /* teapot_normals.png */,
 				56C308262ADFE439001E10D2 /* Utils */,
 				A231F10025EAF61A00CBFC23 /* Products */,
 			);
