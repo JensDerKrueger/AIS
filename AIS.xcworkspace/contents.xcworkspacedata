@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:01_HelloGL/01 HelloGL.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:02_Triforce/02 Triforce.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:03_HelloShading/03 HelloShading.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:04_Textureing/04 Textureing.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:05_Shadows/05 Shadows.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:06_Reflections/06 Reflections.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Utils/Utils.xcodeproj">
+   </FileRef>
+</Workspace>
