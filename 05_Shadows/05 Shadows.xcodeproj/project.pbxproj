@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		561560482F451B940089B78D /* libUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 561560472F451B940089B78D /* libUtils.a */; };
 		5677395325FB7BF000AB2341 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5677394C25FB7BF000AB2341 /* main.cpp */; };
 		56F6196B2F3A9F2600FAD236 /* light.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F619622F3A9F1100FAD236 /* light.frag */; };
 		56F6196C2F3A9F2600FAD236 /* light.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F619632F3A9F1100FAD236 /* light.vert */; };
@@ -55,6 +56,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		561560472F451B940089B78D /* libUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		566225042B14CFB900D3C15F /* Teapot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teapot.h; sourceTree = "<group>"; };
 		566225052B14CFB900D3C15F /* UnitCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitCube.h; sourceTree = "<group>"; };
 		566225062B14CFB900D3C15F /* UnitPlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitPlane.h; sourceTree = "<group>"; };
@@ -76,12 +78,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				561560482F451B940089B78D /* libUtils.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		561560462F451B940089B78D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				561560472F451B940089B78D /* libUtils.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A231F0F625EAF61A00CBFC23 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +109,7 @@
 				56F619682F3A9F1B00FAD236 /* Stones_Normals.png */,
 				56F619692F3A9F1B00FAD236 /* Stones_Specular.png */,
 				56F6196A2F3A9F1B00FAD236 /* teapot_normals.png */,
+				561560462F451B940089B78D /* Frameworks */,
 				A231F10025EAF61A00CBFC23 /* Products */,
 			);
 			sourceTree = "<group>";

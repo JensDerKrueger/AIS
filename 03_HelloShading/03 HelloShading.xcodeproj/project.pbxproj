@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		561560422F451B890089B78D /* libUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 561560412F451B890089B78D /* libUtils.a */; };
 		5677395325FB7BF000AB2341 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5677394C25FB7BF000AB2341 /* main.cpp */; };
 		56F619462F3A9B8000FAD236 /* flat.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F6193E2F3A9B6500FAD236 /* flat.frag */; };
 		56F619472F3A9B8000FAD236 /* flat.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 56F6193F2F3A9B6500FAD236 /* flat.vert */; };
@@ -53,6 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		561560412F451B890089B78D /* libUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5677394C25FB7BF000AB2341 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		56F6193E2F3A9B6500FAD236 /* flat.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = flat.frag; path = Shader/flat.frag; sourceTree = "<group>"; };
 		56F6193F2F3A9B6500FAD236 /* flat.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = flat.vert; path = Shader/flat.vert; sourceTree = "<group>"; };
@@ -70,12 +72,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				561560422F451B890089B78D /* libUtils.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		561560402F451B890089B78D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				561560412F451B890089B78D /* libUtils.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A231F0F625EAF61A00CBFC23 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +99,7 @@
 				56F619432F3A9B6500FAD236 /* light.vert */,
 				56F619442F3A9B6500FAD236 /* phong.frag */,
 				56F619452F3A9B6500FAD236 /* phong.vert */,
+				561560402F451B890089B78D /* Frameworks */,
 				A231F10025EAF61A00CBFC23 /* Products */,
 			);
 			sourceTree = "<group>";

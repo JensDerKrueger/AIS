@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5615603C2F451B6A0089B78D /* libUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5615603B2F451B6A0089B78D /* libUtils.a */; };
 		5677395325FB7BF000AB2341 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5677394C25FB7BF000AB2341 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5615603B2F451B6A0089B78D /* libUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5677394C25FB7BF000AB2341 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		A231F0FF25EAF61A00CBFC23 /* HelloGL-Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "HelloGL-Demo"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -32,16 +34,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5615603C2F451B6A0089B78D /* libUtils.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5615603A2F451B6A0089B78D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5615603B2F451B6A0089B78D /* libUtils.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A231F0F625EAF61A00CBFC23 = {
 			isa = PBXGroup;
 			children = (
 				5677394C25FB7BF000AB2341 /* main.cpp */,
+				5615603A2F451B6A0089B78D /* Frameworks */,
 				A231F10025EAF61A00CBFC23 /* Products */,
 			);
 			sourceTree = "<group>";
