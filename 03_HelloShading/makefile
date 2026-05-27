@@ -44,6 +44,7 @@ UTILS_EM_LIB := $(UTILS_DIR)/libutils_emscripten.a
 
 # Emscripten tools
 EMCC ?= em++
+EM_CXXFLAGS := -std=c++20
 
 # Common Emscripten link flags
 EM_EXPORTED_FUNCTIONS := ''
@@ -111,7 +112,7 @@ utils_emscripten_release:
 # ---- Emscripten builds (link against libutils_emscripten.a) ----
 emscripten: utils_emscripten
 	@mkdir -p $(WEBOUTDIR)
-	$(EMCC) $(SRC) $(UTILS_EM_LIB) \
+	$(EMCC) $(EM_CXXFLAGS) $(SRC) $(UTILS_EM_LIB) \
 		$(EM_INCLUDES) \
 		$(EM_LINK_FLAGS) \
 		-O2 \
@@ -119,7 +120,7 @@ emscripten: utils_emscripten
 
 emscripten_release: utils_emscripten_release
 	@mkdir -p $(WEBOUTDIR)
-	$(EMCC) $(SRC) $(UTILS_EM_LIB) \
+	$(EMCC) $(EM_CXXFLAGS) $(SRC) $(UTILS_EM_LIB) \
 		$(EM_INCLUDES) \
 		$(EM_LINK_FLAGS) \
 		-O3 -DNDEBUG \
