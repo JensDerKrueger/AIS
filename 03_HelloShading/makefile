@@ -47,8 +47,8 @@ EMCC ?= em++
 EM_CXXFLAGS := -std=c++20
 
 # Common Emscripten link flags
-EM_EXPORTED_FUNCTIONS := ''
-EM_RUNTIME_METHODS    := ''
+EM_EXPORTED_FUNCTIONS := '["_main"]'
+EM_RUNTIME_METHODS    := '["ccall"]'
 
 EM_LINK_FLAGS := \
 	$(EM_PRELOAD_ARGS) \
