@@ -112,6 +112,8 @@ public:
   
   virtual void keyboard(int key, int scancode, int action, int mods) override
   {
+    if (key == GLENV_KEY_ESCAPE && action == GLENV_PRESS)
+      closeWindow();
   }
 } myApp;
 

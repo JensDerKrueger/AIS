@@ -18,7 +18,7 @@
                BlueprintIdentifier = "A231F0FE25EAF61A00CBFC23"
                BuildableName = "Reflections"
                BlueprintName = "Reflections"
-               ReferencedContainer = "container:06 Reflections.xcodeproj">
+               ReferencedContainer = "container:07 Reflections.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -48,7 +48,7 @@
             BlueprintIdentifier = "A231F0FE25EAF61A00CBFC23"
             BuildableName = "Reflections"
             BlueprintName = "Reflections"
-            ReferencedContainer = "container:06 Reflections.xcodeproj">
+            ReferencedContainer = "container:07 Reflections.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -65,7 +65,7 @@
             BlueprintIdentifier = "A231F0FE25EAF61A00CBFC23"
             BuildableName = "Reflections"
             BlueprintName = "Reflections"
-            ReferencedContainer = "container:06 Reflections.xcodeproj">
+            ReferencedContainer = "container:07 Reflections.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

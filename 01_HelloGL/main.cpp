@@ -39,7 +39,7 @@ void main()
 static void draw(void* arg=nullptr) {
   GL( glClearColor(0.0f, 0.0f, 0.0f, 1.0f) );
   GL( glClear(GL_COLOR_BUFFER_BIT) );
-
+  
   GL( glBindVertexArray(vao) );
   GL( glUseProgram(program) );
   GL( glDrawArrays(GL_TRIANGLES, 0, 3) );
@@ -92,7 +92,7 @@ static void setupGeometry() {
 
 #ifndef __EMSCRIPTEN__
 static void keyCallback(GLFWwindow* window, int key, int scancode, int action,
-                        int mods) {
+                 int mods) {
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
     glfwSetWindowShouldClose(window, true);
 }
@@ -108,47 +108,47 @@ static void sizeCallback(GLFWwindow* window, int width, int height) {
 
 INT WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, INT nCmdShow) {
 #else
-  int main(int argc, char** argv) {
+int main(int argc, char** argv) {
 #endif
     try {
-      GLEnv glEnv{ 800,600,1,"My First OpenGL Program",true,false };
-      glEnv.setKeyCallback(keyCallback);
-      glEnv.setResizeCallback(sizeCallback);
-      setupShaders();
-      setupGeometry();
-      while (!glEnv.shouldClose()) {
-        draw();
-        glEnv.endOfFrame();
-      }
+        GLEnv glEnv{ 800,600,1,"My First OpenGL Program",true,false };
+        glEnv.setKeyCallback(keyCallback);
+        glEnv.setResizeCallback(sizeCallback);
+        setupShaders();
+        setupGeometry();
+        while (!glEnv.shouldClose()) {
+            draw();
+            glEnv.endOfFrame();
+        }
     }
     catch (const GLException& e) {
-      std::stringstream ss;
-      ss << "Insufficient OpenGL Support " << e.what();
+        std::stringstream ss;
+        ss << "Insufficient OpenGL Support " << e.what();
 #ifndef _WIN32
-      std::cerr << ss.str().c_str() << std::endl;
+        std::cerr << ss.str().c_str() << std::endl;
 #else
-      MessageBoxA(
-                  NULL,
-                  ss.str().c_str(),
-                  "OpenGL Error",
-                  MB_ICONERROR | MB_OK
-                  );
+        MessageBoxA(
+            NULL,
+            ss.str().c_str(),
+            "OpenGL Error",
+            MB_ICONERROR | MB_OK
+        );
 #endif
-      return EXIT_FAILURE;
+        return EXIT_FAILURE;
     }
     return EXIT_SUCCESS;
-  }
+}
 
 #else
-  int main(int argc, char** argv) {
-    GLEnv glEnv{800,600,1,"My First OpenGL Program",true,false};
-    setupShaders();
-    setupGeometry();
-    emscripten_set_main_loop_arg(draw, nullptr, 0, 1);
-    while (!glEnv.shouldClose()) {
-      draw();
-      glEnv.endOfFrame();
-    }
-    return EXIT_SUCCESS;
+int main(int argc, char** argv) {
+  GLEnv glEnv{800,600,1,"My First OpenGL Program",true,false};
+  setupShaders();
+  setupGeometry();
+  emscripten_set_main_loop_arg(draw, nullptr, 0, 1);
+  while (!glEnv.shouldClose()) {
+    draw();
+    glEnv.endOfFrame();
   }
+  return EXIT_SUCCESS;
+}
 #endif

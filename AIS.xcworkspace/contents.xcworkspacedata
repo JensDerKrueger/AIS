@@ -17,7 +17,10 @@
       location = "container:05_Shadows/05 Shadows.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:06_Reflections/06 Reflections.xcodeproj">
+      location = "container:06_DeferredShadows/06 DeferredShadows.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:07_Reflections/07 Reflections.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Utils/Utils.xcodeproj">
